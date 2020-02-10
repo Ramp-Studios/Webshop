@@ -50,14 +50,14 @@ nav {
 nav > ul > li {
     padding: 5px;
 }
+
 header {
     height: 10vh
 }
 /* Main Section */
 main {
+    padding-bottom: 20px;
     display: flex;
-    height: 90vh;
-    max-height: 90vh;
     grid-template-columns: 80% 20%;
     grid-template-rows: 80% 20%;
     grid-column-gap: 0px;
@@ -151,6 +151,7 @@ footer > h4 > a:hover, footer > h4 > a:active {
   width: 20%;
   height: 20vh;
   margin-left: 10px;
+  margin-top: 20px;
   background: #8C8;
   counter-increment: gallery-cell;
 }
@@ -159,7 +160,72 @@ footer > h4 > a:hover, footer > h4 > a:active {
   display: block;
   text-align: center;
   content: counter(gallery-cell);
-  line-height: 20px;
+  line-height: 200px;
   font-size: 80px;
   color: white;
 }
+#aanbevolen{
+    animation-delay: 50ms;
+}
+#laatstbekeken{
+    animation-delay: 100ms;
+}
+#laatstoegevoegd{
+    animation-delay: 150ms
+}
+#dagdeals
+{
+    display:flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    flex-direction: row;
+    margin-top: 20px;
+    animation-delay: 300ms;
+}
+
+#dagdeals > div
+{
+    width: 47%;
+    height: 25vh;
+}
+@media screen and (max-width: 728px ) {
+    .line {
+        width: 30px;
+        height: 3px;
+        background: white;
+        margin: 5px;
+    }
+    
+}
+nav{
+    position: relative;
+}
+
+.menu {
+    position: absolute;
+    cursor: pointer;
+    top: 20%;
+    transform: translate();
+    z-index: 2;
+}
+
+.nav-links {
+    position: fixed;
+    background: blue;
+    height: 100vh;
+    width: 100%;
+    flex-direction: column;
+    clip-path: circle(100px at 90% -10%);
+    -webkit-clip-path: circle(100px at 90% -10%);
+    transition: all 1s ease-out;
+}
+.nav-links.open {
+    clip-path: circle(1000px at 90% -10%);
+    -webkit-clip-path: circle(1000px at 90% -10%);
+
+}
+
+.landing {
+    flex-direction: column;
+}
+

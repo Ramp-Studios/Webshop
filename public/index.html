@@ -1,13 +1,13 @@
 <html lang="en">
 <head>
     <title>Shopname</title>
-  <meta charset="utf-8">
-  <link rel="stylesheet" href="css/stylesheet.css">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" integrity="sha384-v8BU367qNbs/aIZIxuivaU55N5GPF89WBerHoGA4QTcbUjYiLQtKdrfXnqAcXyTv" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/stylesheet.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" integrity="sha384-v8BU367qNbs/aIZIxuivaU55N5GPF89WBerHoGA4QTcbUjYiLQtKdrfXnqAcXyTv" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+    <link rel="stylesheet" href="css/animate.css">
 </head>
 <body>
-    
     <nav>
         <div class="menu">
             <div class="line"> </div>
@@ -33,11 +33,6 @@
             <li><img src="" alt="">winkel wagen</li>
         </ul>
     </nav>
-    <section class= "landing">
-        <img src="" alt="">
-    </section>
-    
-
     <header>
         <img src="./images/placeholder_banner.jpg" alt="Header of the site." width="100%" height="100%">
     </header>
@@ -45,8 +40,9 @@
     <main>
         <section>
             <!-- Section voor aanbevolen items -->
-            <section id="aanbevolen">
-                <div class="gallery js-flickity" data-flickity-options='{ "wrapAround": true }'>
+            <section id="aanbevolen" class="animated fadeIn">
+                <h1> Aanbevolen </h1>
+                    <div class="gallery js-flickity" data-flickity-options='{ "wrapAround": true }'>
                     <div class="product">Product2</div>
                     <div class="product">Product3</div>
                     <div class="product">Product4</div>
@@ -59,7 +55,8 @@
                 </div>    
             </section>
             <!-- Section voor laatst bekeken items -->
-            <section id="laatstbekeken">
+            <section id="laatstbekeken" class="animated fadeIn">
+                <h1> Laatst bekeken</h1>
                 <div class="gallery js-flickity" data-flickity-options='{ "wrapAround": true }'>
                     <div>
                         <!-- <img src="https://placeimg.com/256/256/tech?t=1581334857082" alt="Raspberry PI 4 preview"> -->
@@ -78,14 +75,27 @@
                 </div> 
             </section>
             <!-- Section voor dagdeals -->
-            <section id="dagdeals">
-                <div class="gallery js-flickity" data-flickity-options='{ "wrapAround": true }'></div>
-                    <div>Dagdeal1</div>
-                    <div>Dagdeal2</div>
+            <section id="dagdeals" class="animated fadeIn">
+                    <h1> Dagdeals! </h1>
+                    <div class="product">Product1</div>
+                    <div class="product">Product2</div>
+
                 </div> 
             </section>
             <!-- Section voor laatst toegevoegde items -->
-            <section id="laatsttoegevoegd">
+            <section id="laatstoegevoegd" class="animated fadeIn">
+                <h1> Voor het laatst toegevoegd:</h1>
+                <div class="gallery js-flickity" data-flickity-options='{ "wrapAround": true }'>
+                    <div class="product">Product2</div>
+                    <div class="product">Product3</div>
+                    <div class="product">Product4</div>
+                    <div class="product">Product5</div>
+                    <div class="product">Product6</div>
+                    <div class="product">Product7</div>
+                    <div class="product">Product8</div>
+                    <div class="product">Product9</div>
+                    <div class="product">Product10</div>
+                </div>
             </section>
         </section>
         <aside class="first">
