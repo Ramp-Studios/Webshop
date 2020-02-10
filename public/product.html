@@ -7,14 +7,12 @@
 <body>
     <main>
 
-      <script>
-        const response = await fetch(`./api`, {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json'
-          }
-        })
-      </script>
+      <script src="javascript/getItems.js"></script>
+      <div style="display: flex; flex-direction: column;">
+        <h2>Prints in de console</h2>
+        <button onclick="fetchItem('raspberry-pi-4')">Stuurt api call voor raspberry-pi-4</button>
+        <button onclick="recentItems()">Stuurt api call voor 10 laast bekenen items</button>
+      </div>
     </main>
 </body>
 </html>
