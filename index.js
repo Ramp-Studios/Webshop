@@ -20,5 +20,8 @@ app.post('/api', (request, response) => {
 })
 //api get
 app.get('/api', (request, response) => {
+    console.log(request);
     response.json(JSON.stringify({ response: 'hi'}));
 })
+
+

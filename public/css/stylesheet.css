@@ -5,19 +5,55 @@
     scroll-behavior: smooth;
     font-family: 'Maven Pro', sans-serif;
 }
+:root {
+    --main-theme-color: aquamarine;
+    --main-text-color: #333;
+    --main-hover-color: #7e7e7e;
+}
 body{
-    width: 100vw;
+    width: 100%;
     height: 100vh;
 }
-    
+/* Make all header centered */
+h1, h2, h3, h4, h5, h6 {
+    text-align: center;
+    color: var(--main-text-color)
+}
+/* Navigation */
 nav {
     background-color: aqua;
-    width: 100vw;
+    width: 100%;
+    min-height: 50px;
     height: 5vh;
+    display: flex;
+    flex-direction: row;
+    height: 10vh;
+    background: #5b78c7;
+}
+
+.nav-links{
+    display: flex;
+    list-style: none;
+    width: 50%;
+    height: 100%;
+    justify-content: space-around;
+    align-items: center;
+    
+}
+
+.nav-links li a{
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+nav > ul > li {
+    padding: 5px;
 }
 header {
-    height: 8vh
+    height: 10vh
 }
+/* Main Section */
 main {
     display: flex;
     height: 90vh;
@@ -29,12 +65,12 @@ main {
 }
 main > section {
     background-color: wheat;
-    min-width: 85vw;
+    min-width: 85%;
     display: grid;
 
 }
 main > aside {
-    min-width: 15vw;
+    min-width: 15%;
     display: flex;
     flex-direction: column;
 }
@@ -46,11 +82,84 @@ main > aside > div + div{
     background-color: blueviolet;
     height: 50%
 }
+/* Aside footer media images */
+main > aside > div + div > ul > li{
+    font-size: 50px;
+}
+main > aside > div + div > ul > li > a{
+    font-size: 50px;
+    text-decoration: none;
+    color: white;
+}
+main > aside > div + div > ul{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    list-style: none;
+    flex-wrap: wrap;
+}
+/* site footer */
 footer {
-    left: 0;
-    bottom: 0;
     width: 100%;
-    height: 5vh;
-    max-height: 5vh;
-    background-color: chartreuse;
+}
+/* sections in de footer met de lijst van links*/
+footer > div {
+    width: 100%;
+    min-width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+}
+/* header van elke sectie in de lijst van links */
+footer > div > div > h4 {
+    font-weight: 700;
+    font-size: medium;
+    letter-spacing: 1px;
+    width: 100%;
+    text-align: left;
+}
+/* image in footer */
+body > footer > div > img {
+    padding: 10px;
+}
+/* links in de footer */
+footer > div > div > ul {
+    list-style: none;
+}
+footer > div > div > ul > li > a {
+    color: var(--main-text-color)
+}
+footer > div > div > ul > li > a:link, footer > div > div > ul > li > a:visited {
+    text-decoration: none;
+}
+footer > div > div > ul > li > a:hover, footer > div > div > ul > li > a:active {
+    text-decoration: underline;
+}
+/* disclaimer footer */
+footer > h4 > a:link, footer > h4 > a:visited {
+    text-decoration: none;
+    color: var(--main-text-color)
+}
+footer > h4 > a:hover, footer > h4 > a:active {
+    text-decoration: underline;
+    color: var(--main-text-color)
+}
+
+/* aanbevolen */
+.product
+{
+  width: 20%;
+  height: 20vh;
+  margin-left: 10px;
+  background: #8C8;
+  counter-increment: gallery-cell;
+}
+/* cell number */
+.product:before {
+  display: block;
+  text-align: center;
+  content: counter(gallery-cell);
+  line-height: 20px;
+  font-size: 80px;
+  color: white;
 }

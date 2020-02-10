@@ -1,0 +1,12 @@
+{
+    "raspberry-pi-4": {
+        "name": "Raspberry PI 4",
+        "price": 79.98,
+        "description": "Een raspberry PI van hoge kwaliteit."
+    },
+    "arduino-uno": {
+        "name": "Arduino UNO",
+        "price": 10.99,
+        "description": "Arduino UNO r3 development board compatible. Dit is een development board gebaseerd op de ATmega328P"
+    }
+}
