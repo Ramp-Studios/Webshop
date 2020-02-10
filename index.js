@@ -25,9 +25,7 @@ app.get('/api', async (request, response) => {
     //promise to get the data
     const thePromise = new Promise((resolve, reject) => {
       db.find({item: request.headers.item}, function(err, docs) {
-        console.log(docs)
         if (docs[0]) {
-          console.log('oki')
           docs.forEach((doc) => {
             if (doc.stock) stock = doc.stock;
             else if (doc.review) {
