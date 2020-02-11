@@ -1,12 +1,65 @@
 {
-    "raspberry-pi-4": {
-        "name": "Raspberry PI 4",
-        "price": 79.98,
-        "description": "Een raspberry PI van hoge kwaliteit."
+    "raspberry-pi-zero-w":{
+        "name": "Raspberry Pi Zero W",
+        "price": 10.71,
+        "description": "Dit is de kleinste Raspberry Pi van dit moment. Het board is slechts de helft in grootte vergeleken met de Raspberry Pi Model A+",
+        "category": "computers",
+        "image": "images/Raspberry-Pi-Zero-W.jpg"
     },
+
+    "Raspberry-Pi-1-Model-A+-512MB": {
+        "name": "Raspberry Pi 1 Model A+ 512MB",
+        "price": 26.95,
+        "description": "De Raspberry Pi 1 Model A+ is een uitgeklede versie van de Raspberry Pi 1 Model B+ zonder Ethernet, met één USB poort en 512MB RAM. Het weglaten van bepaalde features in de Raspberry Pi 1 Model A+ heeft als resultaat dat deze goedkoper is dan de Model B+ en bijna een derde minder energie gebruikt",
+        "category": "computers",
+        "image": "images/Raspberry-Pi-1-Model-A+-512MB.jpg"
+    },
+
+    "raspberry-pi-2-model-b-1gb": {
+        "name": "Raspberry Pi 2 Model B 1GB v1.2",
+        "price": 37.95,
+        "description": "De Raspberry Pi 2 Model B v1.2 beschikt over een BCM2837 ARMv7 Quad Core Processor op 900MHz en 1GB RAM. Hiermee is de Raspberry Pi 2 Model B 6x sneller dan zijn voorgangers en heeft hij twee keer zoveel geheugen.",
+        "category": "computers",
+        "image": "images/Raspberry-Pi-3-Model B-1GB.jpg"
+    },
+
+    "raspberry-pi-3-model-b-1gb": {
+        "name": "Raspberry Pi 3 Model B 1GB",
+        "price": 39.95,
+        "description": "De Raspberry Pi 3 Model B is gebouwd rondom de Broadcom 2837 ARMv8 64bit processor en is sneller en krachtiger dan zijn voorgangers. Daarnaast heeft de Raspberry Pi 3 nu on-board WiFi / Bluetooth en verbeterd power management om ondersteuning te bieden voor krachtigere externe USB apparaten.",
+        "category": "computers",
+        "image": "images/Raspberry-Pi-3-Model B-1GB.jpg"
+    },
+
+    "raspberry-pi-4": {
+        "name": "Raspberry PI 4 4GB",
+        "price": 79.98,
+        "description": "De Raspberry Pi 4 Model B 4GB is de nieuwste versie van de super minicomputer, nu eindelijk met 4K, HEVC H.265, Dual Micro HDMI, USB 3.0 en nog meer!",
+        "category": "computers",
+        "image": "images/raspberry_pi_4_4gb.jpg"
+    },
+
     "arduino-uno": {
         "name": "Arduino UNO",
-        "price": 10.99,
-        "description": "Arduino UNO r3 development board compatible. Dit is een development board gebaseerd op de ATmega328P"
+        "price": 19.25,
+        "description": "Arduino UNO rev3 development board compatible. Dit is een development board gebaseerd op de ATmega328P",
+        "category": "computers",
+        "image": "images/Arduino-UNO-r3.jpg"
+    },
+
+    "banana-pi-bpi-m1": {
+        "name": "Banana PI BPI-M1",
+        "price": 32.64,
+        "description": "De Banana Pi is voorzien van een Cortex A7 2x 1 GHz dual-core CPU en een ARM Mali400MP2 GPU. Eveneens voorzien van gigabit-ethernet, SATA-ondersteuning en DDR3-geheugen met snelheid van 1 GB. Het apparaat is even klein als de Raspberry Pi, maar de prestaties van de onderdelen zijn groter.",
+        "category": "computers",
+        "image": "images/Banana-PI-BPI-M1.jpg"
+    },
+
+    "banana-pi-bpi-m2": {
+        "name": "Banana Pi M2 BPI-M2 A31S",
+        "price": 83.99,
+        "description": "Banana Pi M2 is het open source hardware platform, is een quad core versie van Banana Pi, Banana Pi M2 is de quad core beter dan de Banana Pi M1, het ondersteunt WIFI aan boord",
+        "category": "computers",
+        "image": "images/Banana-Pi-M2-BPI-M2-A31S.png"
     }
 }

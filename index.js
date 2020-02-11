@@ -2,7 +2,7 @@ const cors = require ('cors');
 const items = require ('./products.json')
 //make the nedb database
 const Datastore = require('nedb')
-  , db = new Datastore({ filename: 'database.db', autoload: true });
+  , db = new Datastore({ filename: './database.db', autoload: true });
 module.exports.database = db;
 db.persistence.setAutocompactionInterval(1000);
 
@@ -15,7 +15,14 @@ app.listen(5000, () => console.log('Listening at port 5000'))
 app.use(express.static('public'));
 app.use(express.json({limit: '1mb'}));
 
-
+//making sure everything is in the db
+for (let element in items) {
+  db.find({item: element}, function(err, docs) {
+    if (!docs[0]) {
+      db.insert({item: element, stock: 100, lastlook: new Date().getTime()})
+    }
+  });
+}
 //api get, used to get data from the database
 app.get('/api', async (request, response) => {
   if (request.headers.item) {
@@ -41,7 +48,14 @@ app.get('/api', async (request, response) => {
           })
         } else {
           //if theres no database entry for this item  make a new one
+          console.log('no item')
+          console.log(JSON.parse({
+            item: request.headers.item,
+            stock: 100,
+            lastlook: new Date().getTime()
+          }))
           db.insert({item: request.headers.item, stock: 100, lastlook: new Date().getTime()}, function(err, newDoc) {
+            console.log(newDoc);
             stock = newDoc.stock;
           })
         }
@@ -49,18 +63,21 @@ app.get('/api', async (request, response) => {
       })
     }, 250)
     await thePromise;
-    console.log(JSON.parse(JSON.stringify({
+    /*console.log(JSON.parse(JSON.stringify({
       name: item.name,
       price: item.price,
       description: item.description,
+      image: item.image,
       category: item.category,
       stock: stock,
       reviews: reviews
     })))
+    console.log(item.image); */
     response.json(JSON.stringify({
       name: item.name,
       price: item.price,
       description: item.description,
+      image: item.image,
       category: item.category,
       stock: stock,
       reviews: reviews
@@ -78,6 +95,7 @@ app.get('/api', async (request, response) => {
               name: item.name,
               price: item.price,
               description: item.description,
+              image: item.image,
               category: item.category,
               stock: element.stock,
               lastlook: element.lastlook
@@ -90,7 +108,7 @@ app.get('/api', async (request, response) => {
         });
       }, 250)
       await thePromise;
-      console.log(results);
+      //console.log(results);
       response.json(JSON.stringify(results));
     }
   }
@@ -99,4 +117,3 @@ app.get('/api', async (request, response) => {
 app.post('/api', (request, response) => {
   response.end(); //literally dont do anything
 })
-

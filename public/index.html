@@ -6,32 +6,41 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" integrity="sha384-v8BU367qNbs/aIZIxuivaU55N5GPF89WBerHoGA4QTcbUjYiLQtKdrfXnqAcXyTv" crossorigin="anonymous">
     <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
     <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab&display=swap" rel="stylesheet">
+   <script defer src="https://fontawesome.com/icons/align-justify?style=solid">
+</script>
+
 </head>
 <body>
+    
+    </div>
+    
     <nav>
-        <div class="menu">
-            <div class="line"> </div>
-            <div class="line"> </div>
-            <div class="line"> </div>
-        </div>
-        <ul class="nav-links">
-            <li><a href="#">about</a></li>
-            <li><a href="#">iets</a></li>
-            <li><a href="#">onzin</a></li>
-        </ul>
-        <ul>
-            <li><a href="./"><img src="" alt=""></a></li>
-            <li>
-                <div>
-                    <div>
-                        Categories
-                    </div> 
-                    Search bar
-                </div>
-            </li>
-            <li><img src="" alt="">login</li>
-            <li><img src="" alt="">winkel wagen</li>
-        </ul>
+        <div class="dropdown">
+            <button class="dropbtn">Menu</button>
+            <div class="dropdown-content">
+            <a href="#">aanbiedingen</a>
+            <a href="#">pakketen</a>
+            <a href="#">Alexander</a>
+            <a href="#">Alexander</a>
+            <a href="#">Alexander</a>
+            <a href="#">Alexander</a>
+            <a href="#">Alexander</a>
+            <a href="#">Alexander</a>
+            <a href="#">Alexander</a>
+            <a href="#">Alexander</a>
+            <a href="#">Alexander</a>
+            <a href="#">Alexander</a>
+            </div>
+           </div>
+            <div class="search-container">
+                <form action="/action_page.php">
+                  <input type="text" placeholder="Search.." name="search">
+                  <button type="submit"><i class="fa fa-search"></i></button>
+                </form>
+         </div>
+     </div>
     </nav>
     <header>
         <img src="./images/placeholder_banner.jpg" alt="Header of the site." width="100%" height="100%">
@@ -42,57 +51,58 @@
             <!-- Section voor aanbevolen items -->
             <section id="aanbevolen" class="animated fadeIn">
                 <h1> Aanbevolen </h1>
-                    <div class="gallery js-flickity" data-flickity-options='{ "wrapAround": true }'>
-                    <div class="product">Product2</div>
-                    <div class="product">Product3</div>
-                    <div class="product">Product4</div>
-                    <div class="product">Product5</div>                
-                    <div class="product">Product6</div>
-                    <div class="product">Product7</div>
-                    <div class="product">Product8</div>
-                    <div class="product">Product9</div>
-                    <div class="product">Product10</div>
-                </div>    
+                <div id="aanbevolen-carousel" class="carousel"
+                data-flickity='{ "resize": false, "wrapAround": true, "cellAlign": "left", "autoPlay": 800e3, "pauseAutoPlayOnHover": false }'>
+                    <div class="carousel-cell"></div>
+                    <div class="carousel-cell"></div>
+                    <div class="carousel-cell"></div>
+                    <div class="carousel-cell"></div>
+                    <div class="carousel-cell"></div>
+                    <div class="carousel-cell"></div>
+                    <div class="carousel-cell"></div>
+                    <div class="carousel-cell"></div>
+                    <!-- currently 8 items. moet 10 worden-->
+                </div> 
             </section>
             <!-- Section voor laatst bekeken items -->
             <section id="laatstbekeken" class="animated fadeIn">
-                <h1> Laatst bekeken</h1>
-                <div class="gallery js-flickity" data-flickity-options='{ "wrapAround": true }'>
-                    <div>
-                        <!-- <img src="https://placeimg.com/256/256/tech?t=1581334857082" alt="Raspberry PI 4 preview"> -->
-                        <!-- <h4>Raspberry PI 4</h4>
-                        <span class="prijs">79.99</span> -->
-                    </div>
-                    <div class="product">Product2</div>
-                    <div class="product">Product3</div>
-                    <div class="product">Product4</div>
-                    <div class="product">Product5</div>                
-                    <div class="product">Product6</div>
-                    <div class="product">Product7</div>
-                    <div class="product">Product8</div>
-                    <div class="product">Product9</div>
-                    <div class="product">Product10</div> 
+                <h1> Laatst bekeken </h1>
+                <div id="laatstbekeken-carousel" class="carousel"
+                data-flickity='{ "resize": false, "wrapAround": true, "cellAlign": "left" }'>
+                    <div class="carousel-cell"></div>
+                    <div class="carousel-cell"></div>
+                    <div class="carousel-cell"></div>
+                    <div class="carousel-cell"></div>
+                    <div class="carousel-cell"></div>
                 </div> 
             </section>
             <!-- Section voor dagdeals -->
             <section id="dagdeals" class="animated fadeIn">
-                <div class="product">Product1</div>
-                <div class="product">Product2</div>
+                <div class="product">
+                    <div class="dagdeal">
+                        <img src="./images/raspberry pi 4 4gb.jpg" alt="" style="height: 100%; width: 40%">
+                        <div class="dagdeal-info">
+                            <div id="timer-1">Dagdeal 23:11:12</div>
+                            <div>Tot 25% korting</div>
+                            <div><a href="" class="dag-button">Naar de actie</a></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product">
+
+                </div>
             </section>
             <!-- Section voor laatst toegevoegde items -->
-            <section id="laatstoegevoegd" class="animated fadeIn">
+            <section id="laatsttoegevoegd" class="animated fadeIn">
                 <h1> Voor het laatst toegevoegd:</h1>
-                <div class="gallery js-flickity" data-flickity-options='{ "wrapAround": true }'>
-                    <div class="product">Product2</div>
-                    <div class="product">Product3</div>
-                    <div class="product">Product4</div>
-                    <div class="product">Product5</div>
-                    <div class="product">Product6</div>
-                    <div class="product">Product7</div>
-                    <div class="product">Product8</div>
-                    <div class="product">Product9</div>
-                    <div class="product">Product10</div>
-                </div>
+                <div id="laatsttoegevoegd-carousel" class="carousel"
+                data-flickity='{ "resize": false, "wrapAround": true, "cellAlign": "left", "autoPlay": 700e3, "pauseAutoPlayOnHover": false }'>
+                    <div class="carousel-cell"></div>
+                    <div class="carousel-cell"></div>
+                    <div class="carousel-cell"></div>
+                    <div class="carousel-cell"></div>
+                    <div class="carousel-cell"></div>
+                </div> 
             </section>
         </section>
         <aside class="first">
@@ -158,6 +168,7 @@
         <!-- bottom discloser -->
         <h4>* Alle prijzen zijn inclusief BTW en exclusief eventuele <a href="">verzendkosten</a> en servicekosten.</h6>
     </footer>
-    <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+    <script src="./javascript/flickity.pkgd.js"></script>
+    <script src="./javascript/loaddata.js"></script>
 </body>
 </html>

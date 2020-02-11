@@ -4,7 +4,7 @@ async function fetchItem(name) {
         method: 'GET',
         headers: {
             'Content-type': 'json/application',
-            'item': 'raspberry-pi-4'
+            'item': name
         }
     })
     console.log(await response.json());
