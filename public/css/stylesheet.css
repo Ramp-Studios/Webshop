@@ -64,6 +64,8 @@ main {
     grid-row-gap: 0px;
 }
 main > section {
+    padding-top: 20px;
+    padding-bottom: 40px;
     background-color: wheat;
     min-width: 85%;
     display: grid;
@@ -121,6 +123,8 @@ footer > div > div > h4 {
 /* image in footer */
 body > footer > div > img {
     padding: 10px;
+    width: 50%;
+    height: auto;
 }
 /* links in de footer */
 footer > div > div > ul {
