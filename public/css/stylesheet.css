@@ -11,33 +11,45 @@ a:visited {
 }
 
 :root {
-    --main-theme-color: aquamarine;
+    --main-theme-color: #eeeeee;
+    --secondary-color: #222222;
+    --third-color: #2B2B2B;
+    --nav-accent-color: #222222;
     --main-text-color: #333;
+    --secondary-text-color: white;
+    --faded-text-color: #ccc;
     --main-hover-color: #7e7e7e;
 }
 body{
-    background-color:rgb(241, 241, 241);
+    background-color: var(--main-theme-color);
     width: 100%;
     height: 100vh;
+    overflow-x: hidden;
 }
 /* Make all header centered */
 h1, h2, h3, h4, h5, h6 {
     margin-bottom: 10px;
     font-size: 1.6rem;
     text-align: center;
+}
+h1{
     color: var(--main-text-color)
 }
 footer > h4 {
     margin-bottom: 0;
     font-size: 1rem;
+    color: var(--secondary-text-color)
+}
+ul{
+    list-style: none;
 }
 /* Navigation */
 nav {
-    background-color: aqua;
-    
+    background-color: var(--third-color);
+    z-index: 1;
 }
 footer {
-    background-color: rgba(0,0,0,0.15);
+    background-color: var(--third-color);
 }
 header {
     height: 10vh
@@ -45,10 +57,6 @@ header {
 /* Main Section */
 main {
     display: flex;
-    grid-template-columns: 80% 20%;
-    grid-template-rows: 80% 20%;
-    grid-column-gap: 0px;
-    grid-row-gap: 0px;
 }
 main > section {
     min-width: 85%;
@@ -56,8 +64,13 @@ main > section {
 
 }
 main > section > section {
-    padding-top: 5px;
-    padding-bottom: 5px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+/* Aside menu */
+div#cat-main h2 {
+    color: var(--secondary-text-color);
+
 }
 main > aside {
     min-width: 15%;
@@ -65,13 +78,25 @@ main > aside {
     flex-direction: column;
 }
 main > aside > div {
-    background-color: blue;
+    background-color: var(--secondary-color);
+    color: white;
     height: 150%;
 }
 main > aside > div + div{
-    background-color: blueviolet;
-    height: 50%
+    background-color: var(--secondary-color);
+    height: 50%;
 }
+li.aside-cat{
+    width: 40%;
+    max-width: 40%;
+}
+li.aside-cat > a > img{
+    height: 10%;
+}
+/* div#cat-main > ul{
+    display: flex;
+    flex-direction: row;
+} */
 /* Aside footer media images */
 main > aside > div + div > ul > li{
     font-size: 50px;
@@ -107,10 +132,10 @@ footer > div > div > h4 {
     letter-spacing: 1px;
     width: 100%;
     text-align: left;
-    color: black;
+    color: var(--secondary-text-color);
 }
 footer > div > div > ul > li > a {
-    color: var(--main-text-color)
+    color: -var(--secondary-text-color);
 }
 /* image in footer */
 body > footer > div > img {
@@ -123,7 +148,7 @@ footer > div > div > ul {
     list-style: none;
 }
 footer > div > div > ul > li > a {
-    color: var(--main-text-color) !important
+    color: var(--faded-text-color) !important
 }
 footer > div > div > ul > li > a:link, footer > div > div > ul > li > a:visited {
     text-decoration: none;
@@ -134,11 +159,11 @@ footer > div > div > ul > li > a:hover, footer > div > div > ul > li > a:active 
 /* disclaimer footer */
 footer > h4 > a:link, footer > h4 > a:visited {
     text-decoration: none;
-    color: var(--main-text-color)
+    color: var(--secondary-text-color);
 }
 footer > h4 > a:hover, footer > h4 > a:active {
     text-decoration: underline;
-    color: var(--main-text-color)
+    color: var(--secondary-text-color);
 }
 
 /* Carousels */
@@ -170,7 +195,7 @@ footer > h4 > a:hover, footer > h4 > a:active {
     margin: 0 auto;
 }
 .carousel-cell {
-    height: 210px;
+    height: 208px;
     margin: 0 5px;
     border-radius: 15px;
     counter-increment: carousel-cell;
@@ -181,7 +206,7 @@ footer > h4 > a:hover, footer > h4 > a:active {
 #laatstbekeken > div > div > div > .carousel-cell {
     width: calc(25% - 8px);
 }
-#laatstoegevoegd > div > div > div > .carousel-cell {
+#laatsttoegevoegd > div > div > div > .carousel-cell {
     width: calc(33% - 4px);
 }
 .dagdeal {
@@ -194,19 +219,35 @@ footer > h4 > a:hover, footer > h4 > a:active {
     flex-direction: column;
 }
 .dagdeal-info {
-    width: 40%;
-    padding: 5px;
-    margin: 0px auto;
+    width: 60%;
+    overflow: hidden;
+}
+.dagdeal-info > * {
+    display: block;
+    margin-left: 30px;
+    font-weight: 600;
+    padding: 10px;
+}
+.dagdeal-info > span {
+    color: var(--main-text-color)
+}
+.dagdeal-info > span + span {
+    color: var(--faded-text-color)
 }
 .dagdeal-info > #timer-1 {
-    width: 100%;
-    background-color: white;
-    padding: 12px;
+    width: 70%;
+    margin-left: 15px;
+    padding: 0;
     font-weight: 700;
     font-size: 1.5rem;
     color: red;
+    overflow: hidden;
 }
-/* nav */
+#dagdealtimer {
+    font-weight: 500;
+    
+}
+/* nav MADE BY REDOUAN
 .dropbtn {
     background-color: purple;
     color: white;
@@ -247,7 +288,7 @@ footer > h4 > a:hover, footer > h4 > a:active {
 
 .dropdown:hover .dropbtn {
     background-color: violet;
-}
+} */
 
 
 .carousel-cell > img{
@@ -268,7 +309,7 @@ footer > h4 > a:hover, footer > h4 > a:active {
     background-color: rgb(147, 147, 255);
     border: none;
     height: 30px;
-    color: #ffffff;
+    color: var(--main-text-color);
     margin-top: -5px;
 }
 .carousel-cell > div > button:hover {
@@ -311,10 +352,9 @@ footer > h4 > a:hover, footer > h4 > a:active {
 .carousel-cell > img + div > span + span + span::before {
     content: "€"
 }
-
+/* 
 nav .search-container {
     margin-left: 40%;
-    
   }
   
   nav input[type=text] {
@@ -355,5 +395,91 @@ nav .search-container {
     }
     nav input[type=text] {
       border: 1px solid #ccc;  
-    }
+    } */
+
+
+
+/* 
+
+PATRYKS NAVIGATION 
+
+*/
+
+/* MAIN SECTION OF NAV */
+nav {
+    display: flex;
+    flex-direction: row;
+    min-height: 5vh;
+    width: 100%;
+}
+
+nav > a > img
+{
+    height: 5vh;
+    margin-left: 2vw;
+}
+
+/* BUTTON STYLING */
+.dropbtn{
+    min-height: 5vh;
+    min-width: 3vw;
+    font-size: 24px;
+    border: none;
+    cursor: pointer;
+    color: white;
+    background-color: var(--nav-accent-color);
+}
+/* DROPDOWN STYLING */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* CONTENT OF DROPDOWN ( ITS HIDDEN BY DEFAULT!!!) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+/* A content styling */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+    background-color: -var(--main-hover-color);
+}
+
+    /* Change the button background on hover */
+.dropdown:hover .dropbtn {
+    background-color: var(--third-color);
+}
+
+.search-container{
+    float: right;
+    display: flex;
+    margin-left: 20vw;
+}
+.search-container > form > input {
+    height: 90%;
+    border: 0;
+    margin: 2px 0;
+    width: 100%
+}
+.search-container > form {
+    width: 20vw;
+    border: 0;
 }

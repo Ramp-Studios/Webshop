@@ -19,7 +19,7 @@ app.use(express.json({limit: '1mb'}));
 for (let element in items) {
   db.find({item: element}, function(err, docs) {
     if (!docs[0]) {
-      db.insert({item: element, stock: 100, lastlook: new Date().getTime()})
+      db.insert({item: element, stock: 100, lastlook: 0, added: new Date().getTime()})
     }
   });
 }
@@ -86,6 +86,56 @@ app.get('/api', async (request, response) => {
     let results = {};
     //if header get is last10 get the last 10 sorted by most recent.
     if (request.headers.get === 'last10') {
+      const thePromise = new Promise((resolve, reject) => {
+        db.find({item: {$exists: true}, stock: {$exists: true}}, function (err, docs) {
+          docs = docs.sort((a, b) => b.lastlook - a.lastlook)
+          docs.every(function(element, index) {
+            const item = items[element.item];
+            const result = {
+              name: item.name,
+              price: item.price,
+              description: item.description,
+              image: item.image,
+              category: item.category,
+              stock: element.stock,
+              lastlook: element.lastlook
+            }
+            results[index+1] = result;
+            if (index >= 9) return false;
+            else return true; 
+          });
+          resolve()
+        });
+      }, 250)
+      await thePromise;
+      //console.log(results);
+      response.json(JSON.stringify(results));
+    } else if (request.headers.get === 'newest10') {
+      const thePromise = new Promise((resolve, reject) => {
+        db.find({item: {$exists: true}, stock: {$exists: true}}, function (err, docs) {
+          docs = docs.sort((a, b) => b.added - a.added)
+          docs.every(function(element, index) {
+            const item = items[element.item];
+            const result = {
+              name: item.name,
+              price: item.price,
+              description: item.description,
+              image: item.image,
+              category: item.category,
+              stock: element.stock,
+              lastlook: element.lastlook
+            }
+            results[index+1] = result;
+            if (index >= 9) return false;
+            else return true; 
+          });
+          resolve()
+        });
+      }, 250)
+      await thePromise;
+      //console.log(results);
+      response.json(JSON.stringify(results));
+    } else if (request.headers.get === 'top10') {
       const thePromise = new Promise((resolve, reject) => {
         db.find({item: {$exists: true}, stock: {$exists: true}}, function (err, docs) {
           docs = docs.sort((a, b) => b.lastlook - a.lastlook)
