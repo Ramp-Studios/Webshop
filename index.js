@@ -63,16 +63,6 @@ app.get('/api', async (request, response) => {
       })
     }, 250)
     await thePromise;
-    /*console.log(JSON.parse(JSON.stringify({
-      name: item.name,
-      price: item.price,
-      description: item.description,
-      image: item.image,
-      category: item.category,
-      stock: stock,
-      reviews: reviews
-    })))
-    console.log(item.image); */
     response.json(JSON.stringify({
       name: item.name,
       price: item.price,
@@ -84,86 +74,84 @@ app.get('/api', async (request, response) => {
     }));
   } else if (request.headers.get) {
     let results = {};
-    //if header get is last10 get the last 10 sorted by most recent.
-    if (request.headers.get === 'last10') {
-      const thePromise = new Promise((resolve, reject) => {
-        db.find({item: {$exists: true}, stock: {$exists: true}}, function (err, docs) {
-          docs = docs.sort((a, b) => b.lastlook - a.lastlook)
-          docs.every(function(element, index) {
-            const item = items[element.item];
-            const result = {
-              name: item.name,
-              price: item.price,
-              description: item.description,
-              image: item.image,
-              category: item.category,
-              stock: element.stock,
-              lastlook: element.lastlook
-            }
-            results[index+1] = result;
-            if (index >= 9) return false;
-            else return true; 
-          });
-          resolve()
+    let finaldocs = [];
+    db.find({item: {$exists: true}, stock: {$exists: true}}, async function (err, docs) {
+      const thePromise2 = new Promise(async (resolve, reject) => {
+        docs.forEach(async (doc) => {
+          let ratings = 0;
+          let ratingtotal = 0;
+          const thePromise3 = new Promise(async (resolve, reject) => {
+            db.find({item: doc.item, rating: {$exists: true}}, function (err, docs) {
+              docs.forEach((doc) => {
+                ratings ++;
+                ratingtotal += doc.rating;
+              })
+              resolve();
+            })
+          }, 300)
+          await thePromise3;
+          if (ratings >= 1) doc.rating = ratingtotal / ratings
+          else doc.rating = 3;
+          doc.ratings = ratings;
+
+          const item = items[doc.item];
+          const result = {
+            name: item.name,
+            price: item.price,
+            description: item.description,
+            image: item.image,
+            category: item.category,
+            rating: doc.rating,
+            ratings: doc.ratings,
+            stock: doc.stock,
+            lastlook: doc.lastlook,
+            added: doc.added
+          }
+          finaldocs.push(result);
+          if (finaldocs.length >= 10 || finaldocs.length === docs.length) {
+            resolve();
+          }
+        })
+      }, 300);
+      await thePromise2;
+      //sort it all
+      if (request.headers.get === 'last10') { 
+        docs = docs.sort(function (a, b) {
+          return b.lastlook - a.lastlook
+        })
+      } else if (request.headers.get === 'newest10') {
+        docs = docs.sort(function (a, b) {
+          return a.added - b.added
+        })
+      } else if (request.headers.get === 'top10') {
+        finaldocs.sort(function(a, b) {
+          return b.rating - a.rating;
         });
-      }, 250)
-      await thePromise;
-      //console.log(results);
+      }
+      finaldocs.forEach((doc, index) => {
+        results[index+1] = doc;
+      })
       response.json(JSON.stringify(results));
-    } else if (request.headers.get === 'newest10') {
-      const thePromise = new Promise((resolve, reject) => {
-        db.find({item: {$exists: true}, stock: {$exists: true}}, function (err, docs) {
-          docs = docs.sort((a, b) => b.added - a.added)
-          docs.every(function(element, index) {
-            const item = items[element.item];
-            const result = {
-              name: item.name,
-              price: item.price,
-              description: item.description,
-              image: item.image,
-              category: item.category,
-              stock: element.stock,
-              lastlook: element.lastlook
-            }
-            results[index+1] = result;
-            if (index >= 9) return false;
-            else return true; 
-          });
-          resolve()
-        });
-      }, 250)
-      await thePromise;
-      //console.log(results);
-      response.json(JSON.stringify(results));
-    } else if (request.headers.get === 'top10') {
-      const thePromise = new Promise((resolve, reject) => {
-        db.find({item: {$exists: true}, stock: {$exists: true}}, function (err, docs) {
-          docs = docs.sort((a, b) => b.lastlook - a.lastlook)
-          docs.every(function(element, index) {
-            const item = items[element.item];
-            const result = {
-              name: item.name,
-              price: item.price,
-              description: item.description,
-              image: item.image,
-              category: item.category,
-              stock: element.stock,
-              lastlook: element.lastlook
-            }
-            results[index+1] = result;
-            if (index >= 9) return false;
-            else return true; 
-          });
-          resolve()
-        });
-      }, 250)
-      await thePromise;
-      //console.log(results);
-      response.json(JSON.stringify(results));
-    }
+    });
   }
 })
 //api post, used for reviews
-app.post('/api', (request, response) => {
+app.post('/api/review', (request, response) => {
+  console.log(request.body);
   response.end(); //literally dont do anything
+
+  if (String(request.body.product) && parseInt(request.body.rating) >= 1 && parseInt(request.body.rating) <= 5 && String(request.body.writer) && String(request.body.review)) {
+    db.find({item: request.body.product}, function (err, docs) {
+      if (docs[0]) {
+        //db.insert({item: element, stock: 100, lastlook: 0, added: new Date().getTime()})
+        console.log('Inserting review')
+        db.insert({item: String(request.body.product), rating: parseInt(request.body.rating), writer: String(request.body.writer), review: String(request.body.review)})
+      } else {
+        console.log('Review for unknown product. Canceling it but wtf')
+      }
+    })
+  }
+  db.find({item: request.body.product, review: request.body.review}, function (err, docs) {
+    console.log(docs);
+  })
 })

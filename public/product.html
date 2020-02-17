@@ -1,19 +1,182 @@
 <html lang="en">
 <head>
-    <title>Shopname</title>
-  <meta charset="utf-8">
-  <link rel="stylesheet" href="css/stylesheet.css">
+    <title>Kappazon</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/stylesheet.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" integrity="sha384-v8BU367qNbs/aIZIxuivaU55N5GPF89WBerHoGA4QTcbUjYiLQtKdrfXnqAcXyTv" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="shortcut icon" href="https://i.imgur.com/h2JGE4n.png"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab&display=swap" rel="stylesheet">
+    <script defer src="https://fontawesome.com/icons/align-justify?style=solid">
+</script>
+
 </head>
 <body>
-    <main>
+    <script src="./javascript/review.js"></script>
+    <script src="./javascript/slideshow.js" defer></script>
+    <nav>
+        <div class="dropdown">
+            <button class="dropbtn">☰</button>
+            <div class="dropdown-content">
+                    <a href="#">Homepage</a>
+                    <a href="#">Elektronika</a>
+                    <a href="#">Elektronika Kits</a>
+                    <a href="#">Games</a>
+                    <a href="#">Boeken</a>
+            </div>
+        </div>
+        <a href="#"><img src="https://i.imgur.com/MhpCHIj.png"></a>
+        <div class="search-container">
+            <div class="dropdown">
+                <button class="dropbtn">˅</button>
+                <div class="dropdown-content">
+                    <a href="#">Homepage</a>
+                    <a href="#">Elektronika</a>
+                    <a href="#">Elektronika Kits</a>
+                    <a href="#">Games</a>
+                    <a href="#">Boeken</a>
+                </div>
+            </div>
+            <form action="/#">
+                <input type="text" placeholder="Search.." name="search">
+            </form>
+        </div>
+    </nav>
+    <!-- Main content van de webshop -->
+    <main id="product-main">
+        <section id="product-page">
+            <div class="productgrid">
+                <div class="pg1">
+                    <div class="slideshow-container">
 
-      <script src="javascript/getItems.js"></script>
-      <div style="display: flex; flex-direction: column;">
-        <h2>Prints in de console</h2>
-        <button onclick="fetchItem('raspberry-pi-4')">Stuurt api call voor raspberry-pi-4</button>
-        <button onclick="fetchItem('arduino-uno')">Stuurt api call voor arduino-uno</button>
-        <button onclick="recentItems()">Stuurt api call voor 10 laast bekenen items</button>
-      </div>
+                        <!-- Full-width images with number and caption text -->
+                        <div class="mySlides fade">
+                          <div class="numbertext">1 / 3</div>
+                          <img src="https://i.imgur.com/N2LIDXu.jpg">
+                          <div class="text">Caption Text</div>
+                        </div>
+                      
+                        <div class="mySlides fade">
+                          <div class="numbertext">2 / 3</div>
+                          <img src="https://i.imgur.com/O6OK6IV.jpg">
+                          <div class="text">Caption Two</div>
+                        </div>
+                      
+                        <div class="mySlides fade">
+                          <div class="numbertext">3 / 3</div>
+                          <img src="https://i.imgur.com/uNcePkK.jpg">
+                          <div class="text">Caption Three</div>
+                        </div>
+                      
+                        <!-- Next and previous buttons -->
+                        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+                      </div>
+                      <br>
+                      
+                      <!-- The dots/circles -->
+                      <div style="text-align:center">
+                        <span class="dot" onclick="currentSlide(1)"></span>
+                        <span class="dot" onclick="currentSlide(2)"></span>
+                        <span class="dot" onclick="currentSlide(3)"></span>
+                      </div>                      
+                </div>
+                <div class="pg2">
+                    <h2>Beschrijving product</h2>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Minus, porro et tempore nam dolorem alias, nisi doloribus assumenda voluptatem error at. Quae cum nulla deleniti rem sapiente quibusdam, tenetur nemo? Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam quis tempore cumque iste nemo nam quibusdam aliquid vitae nihil perspiciatis recusandae deserunt optio adipisci doloribus repellat, facilis omnis impedit nobis!</p>
+                </div>
+                <div class="pg3"> 
+                    <h2>Beschrijving product</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo, culpa doloremque hic maxime dolorum labore quam, qui ab, ea placeat magni eaque nesciunt at fugit? Doloremque corrupti officiis accusantium dolorum.</p>
+                </div>
+                <div class="pg4">
+                    <h2>Product specificaties</h2>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Omnis est similique minima aliquam molestias molestiae! Quia alias sunt eos, error a, rem voluptatibus voluptate, consequatur officiis laudantium quasi dicta accusantium?</p>
+                </div>
+                <div class="pg5">
+                    <!-- Reviews -->
+                    <h2>Reviews</h2>
+                    <section style="height: 10vh">
+                        <button onclick="writeReview('raspberry-pi-4', 5, 'Anonymous', 'UwU pretty kool. I likeu')">Stuurt api call voor raspberry-pi-4 review</button>
+                    </section>
+                </div>
+            </div>
+        </section>
+        <aside class="first">
+            <div class="first">
+                <div class="cat-drime">
+                    <ul>
+                        <li><a></a></li>
+                    </ul>
+                </div>
+                <div id="cat-main">
+                    <h2>Categories</h2>
+                    <ul> 
+                        <li ><a href="#"><img id="categorypng" src="https://i.imgur.com/DZ57HEJ.png" ></a></li>
+                        <li><a href="#"><img id="categorypng" src="https://i.imgur.com/VHCDSoZ.png"></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="second">
+                <p>Social Media</p>
+                <ul>
+                    <li><a aria-hidden="true" class="fab fa-facebook-square" href="www.facebook.com"></a></li>
+                    <li><a aria-hidden="true" class="fab fa-linkedin-in" href="www.linkdin.nl"></a></li>
+                    <li><a aria-hidden="true" class="fab fa-twitter" href="www.twiter.nl"></a></li>
+                    <li><a aria-hidden="true" class="fab fa-instagram" href="www.instagram.nl"></a></li>
+                </ul>
+            </div>
+        </aside>
     </main>
+    <!-- site footer onderaan -->
+    <footer>
+        <!-- links in footer -->
+        <div>
+            <div>
+                <h4>Onze Service</h4>
+                <ul>
+                    <li><a href="">Contact opnemen</a></li>
+                    <li><a href="">Betalen</a></li>
+                    <li><a href="">Retourneren</a></li>
+                    <li><a href="">Grantie & Reparatie</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Over ons</h4>
+                <ul>
+                    <li><a href="">Bedrijfsgegevens</a></li>
+                    <li><a href="">Nieuws</a></li>
+                    <li><a href="">Werken bij RAMP</a></li>
+                    <li><a href="">Overige informatie</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Privacy & Voorwaarden</h4>
+                <ul>
+                    <li><a href="">Algemene voorwaarden</a></li>
+                    <li><a href="">Privacy</a></li>
+                    <li><a href="">Cookies</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Zakelijk met ons</h4>
+                <ul>
+                    <li><a href="">Zakelijk verkopen</a></li>
+                    <li><a href="">Zakelijk bestellen</a></li>
+                    <li><a href="">Adverteren</a></li>
+                    <li><a href="">Leveranciers</a></li>
+                    <li><a href="">Tweedehands verkopen</a></li>
+                </ul>
+            </div>
+        </div>
+        <!-- logo at the bottom -->
+        <div>
+            <img src="./images/placeholder_banner2.jpg" alt="Header of the site." height="100%">
+        </div>
+        <!-- bottom discloser -->
+        <h4>* Alle prijzen zijn inclusief BTW en exclusief eventuele <a href="">verzendkosten</a> en servicekosten.</h6>
+    </footer>
 </body>
 </html>

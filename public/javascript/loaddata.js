@@ -31,6 +31,7 @@ async function load(soort) {
         }
     })
     const data = JSON.parse(await response.json());
+    console.log(data)
     let done = 0;
     let carousel
     if (soort === 'top10') carousel = document.getElementById('aanbevolen-carousel').children;
@@ -40,18 +41,9 @@ async function load(soort) {
     for (let element in data) {
         //getting item and section
         const item = data[element]
-        let ratings;
-        let stars;
-        if (item.reviews) {
-            item.reviews.forEach((review) => {
-                ratings++;
-                stars += review.stars;
-            })
-            stars = Math.round(stars / ratings);
-        } else {
-            stars = 3;
-            ratings = 0;
-        }
+        let ratings = item.ratings || 0;
+        let stars = item.rating || 3;
+
         const section = carousel[done]
         //making image
         const image = section.appendChild(document.createElement('img'))
