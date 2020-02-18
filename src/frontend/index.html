@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Kappazon</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/stylesheet.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" integrity="sha384-v8BU367qNbs/aIZIxuivaU55N5GPF89WBerHoGA4QTcbUjYiLQtKdrfXnqAcXyTv" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="shortcut icon" href="https://i.imgur.com/h2JGE4n.png"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Coda+Caption:800|Roboto+Condensed&display=swap" rel="stylesheet">
+    <script defer src="https://fontawesome.com/icons/align-justify?style=solid"></script>
+</head>
+
+<body>
+    <!-- NAV MADE BY PATRYK -->
+    <nav id="nav"></nav>
+    <header>
+        <img src="img/placeholder_banner.jpg" alt="Header of the site." width="100%" height="100%">
+    </header>
+    <main>
+        <section>
+            <!-- Section voor aanbevolen items -->
+            <section id="aanbevolen" class="animated fadeIn">
+                <h1> Aanbevolen </h1>
+                <div id="aanbevolen-carousel" class="carousel"
+                data-flickity='{ "resize": false, "wrapAround": true, "cellAlign": "left", "autoPlay": 800e3, "pauseAutoPlayOnHover": false }'>
+                    <div class="carousel-cell"></div>
+                    <div class="carousel-cell"></div>
+                    <div class="carousel-cell"></div>
+                    <div class="carousel-cell"></div>
+                    <div class="carousel-cell"></div>
+                    <div class="carousel-cell"></div>
+                    <div class="carousel-cell"></div>
+                    <div class="carousel-cell"></div>
+                    <div class="carousel-cell"></div>
+                    <div class="carousel-cell"></div>
+                </div> 
+            </section>
+            <!-- Section voor laatst bekeken items -->
+            <section id="laatstbekeken" class="animated fadeIn">
+                <h1> Laatst bekeken </h1>
+                <div id="laatstbekeken-carousel" class="carousel"
+                data-flickity='{ "resize": false, "wrapAround": true, "cellAlign": "left" }'>
+                    <div class="carousel-cell"></div>
+                    <div class="carousel-cell"></div>
+                    <div class="carousel-cell"></div>
+                    <div class="carousel-cell"></div>
+                    <div class="carousel-cell"></div>
+                    <div class="carousel-cell"></div>
+                    <div class="carousel-cell"></div>
+                    <div class="carousel-cell"></div>
+                    <div class="carousel-cell"></div>
+                    <div class="carousel-cell"></div>
+                </div> 
+            </section>
+            <!-- Section voor dagdeals -->
+            <section id="dagdeals" class="animated fadeIn">
+                <div class="product">
+                    <div class="dagdeal">
+                        <img src="img/Arduino-UNO-r3.jpg" alt="" style="height: 100%; width: 40%">
+                        <div class="dagdeal-info">
+                            <div id="timer-1">Dagdeal<img src="img/timer_icon.png" alt="" height="20" style="margin: 0 6px;"><span id="dagdealtimer">23:11:12</span></div>
+                            <span>Tot 25% korting</span>
+                            <span>* Op de advies prijs</span>
+                            <div class=><a href="" class="dag-button">Naar de actie</a></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="product">
+                    <img src="https://png.pngtree.com/thumb_back/fw800/back_our/20190621/ourmid/pngtree-cool-business-technology-banner-image_178766.jpg" alt="" width="100%", height="100%">
+                </div>
+            </section>
+            <!-- Section voor laatst toegevoegde items -->
+            <section id="laatsttoegevoegd" class="animated fadeIn">
+                <h1> Voor het laatst toegevoegd:</h1>
+                <div id="laatsttoegevoegd-carousel" class="carousel"
+                data-flickity='{ "resize": false, "wrapAround": true, "cellAlign": "left", "autoPlay": 700e3, "pauseAutoPlayOnHover": false }'>
+                    <div class="carousel-cell"></div>
+                    <div class="carousel-cell"></div>
+                    <div class="carousel-cell"></div>
+                    <div class="carousel-cell"></div>
+                    <div class="carousel-cell"></div>
+                    <div class="carousel-cell"></div>
+                    <div class="carousel-cell"></div>
+                    <div class="carousel-cell"></div>
+                    <div class="carousel-cell"></div>
+                    <div class="carousel-cell"></div>
+                </div> 
+            </section>
+        </section>
+        <aside id="aside"></aside>
+    </main>
+    <footer id="footer"></footer>
+    <script src="js/ramp/flickity.pkgd.js"></script>
+    <script src="js/ramp/timer.js"></script>
+    <script src="js/components/Component.js"></script>
+    <script src="js/components/Nav.js"></script>
+    <script src="js/components/Aside.js"></script>
+    <script src="js/components/Footer.js"></script>
+    <script src="js/components/Product.js"></script>
+    <script src="js/components/Products.js"></script>
+    <script src="js/components/Login.js"></script>
+    
+    <script src="js/API.js"></script>
+    <script src="js/controllers/IndexController.js"></script>
+</body>
+
+</html>

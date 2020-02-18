@@ -1,0 +1,7 @@
+ 
+{
+    "mongoURI": "mongodb://mongo:27017/web-dev",
+    "jwtSecret": "Vx6VScMm9kz6ko",
+    "githubClientId": "",
+    "githubSecret": ""
+}
