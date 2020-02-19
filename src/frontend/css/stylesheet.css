@@ -70,7 +70,7 @@
   }
   
   .button.disabled {
-    background-color: #ccc; /* Green */
+    background-color: #ccc;
     color: #333;
   }
   
@@ -616,7 +616,7 @@ button#product-add-to-ww{
 button#product-add-to-ww:hover{
     background: #995e07;
 }
-button#product-add-to-ww.disabled {
+button#product-add-to-ww:disabled {
     background-color: #ccc;
     color: #333;
 }
@@ -626,6 +626,14 @@ p#prijs{
 }
 div#voorraad{
     color: green;
+    font-size: 1.2rem;
+    text-align: center;
+    border-width: 1px;
+    border-style: solid;
+    width: 20%;
+}
+div#nietopvoorraad{
+    color: red;
     font-size: 1.2rem;
     text-align: center;
     border-width: 1px;
