@@ -14,8 +14,8 @@ class Login extends Component {
             event = "submit";
             id = "login";
             innerHTML = `
-            <input type="text" name="email" id="email" value="">
-            <input type="password" name="password" id="password" value="">
+            <input type="text" placeholder="Username" name="email" id="email" value="">
+            <input type="password" placeholder="Password" E-mail" name="password" id="password" value="">
             <input class="button" type="submit" value="Login">`;
         }
         this.rootElement.id = id;

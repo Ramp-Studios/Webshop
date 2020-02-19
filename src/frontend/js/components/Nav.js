@@ -5,7 +5,6 @@ document.getElementById("nav").innerHTML = `
                 <a href="#">Homepage</a>
                 <a href="#">Elektronika</a>
                 <a href="#">Elektronika Kits</a>
-                <a href="#">Games</a>
                 <a href="#">Boeken</a>
             </div>
         </div>
@@ -20,10 +19,6 @@ document.getElementById("nav").innerHTML = `
                     </label>
                     <label class="container">
                         <input type="checkbox"><a>Elektronika Kits</a>
-                        <span class="checkmark"></span>
-                    </label>
-                    <label class="container">
-                        <input type="checkbox"><a>Games</a>
                         <span class="checkmark"></span>
                     </label>
                     <label class="container">

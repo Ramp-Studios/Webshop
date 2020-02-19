@@ -14,60 +14,30 @@
 
 </head>
 <body>
-    <script src="./javascript/review.js"></script>
-    <script src="./javascript/slideshow.js" defer></script>
-    <nav>
-        <div class="dropdown">
-            <button class="dropbtn">☰</button>
-            <div class="dropdown-content">
-                    <a href="./index.html">Homepage</a>
-                    <a href="#">Elektronika</a>
-                    <a href="#">Elektronika Kits</a>
-                    <a href="#">Games</a>
-                    <a href="#">Boeken</a>
-            </div>
-        </div>
-        <a href="./index.html"><img src="https://i.imgur.com/MhpCHIj.png"></a>
-        <div class="search-container">
-            <div class="dropdown">
-                <button class="dropbtn">˅</button>
-                <div class="dropdown-content">
-                    <a href="#">Homepage</a>
-                    <a href="#">Elektronika</a>
-                    <a href="#">Elektronika Kits</a>
-                    <a href="#">Games</a>
-                    <a href="#">Boeken</a>
-                </div>
-            </div>
-            <form action="/#">
-                <input type="text" placeholder="Search.." name="search">
-            </form>
-        </div>
-    </nav>
+    <nav id="nav"></nav>
     <!-- Main content van de webshop -->
     <main id="product-main">
         <section id="product-page">
             <div class="productgrid">
                 <div class="pg1">
                     <div class="slideshow-container">
-
                         <!-- Full-width images with number and caption text -->
                         <div class="mySlides fade">
-                          <div class="numbertext">1 / 3</div>
-                          <img src="https://i.imgur.com/N2LIDXu.jpg">
-                          <div class="text">Caption Text</div>
+                            <div class="numbertext">1 / 3</div>
+                            <img src="http://i.imgur.com/N2LIDXu.jpg">
+                            <div class="text">Caption Text</div>
                         </div>
                       
                         <div class="mySlides fade">
-                          <div class="numbertext">2 / 3</div>
-                          <img src="https://i.imgur.com/O6OK6IV.jpg">
-                          <div class="text">Caption Two</div>
+                            <div class="numbertext">2 / 3</div>
+                            <img src="http://i.imgur.com/O6OK6IV.jpg">
+                            <div class="text">Caption Two</div>
                         </div>
                       
                         <div class="mySlides fade">
-                          <div class="numbertext">3 / 3</div>
-                          <img src="https://i.imgur.com/uNcePkK.jpg">
-                          <div class="text">Caption Three</div>
+                            <div class="numbertext">3 / 3</div>
+                            <img src="http://i.imgur.com/uNcePkK.jpg">
+                            <div class="text">Caption Three</div>
                         </div>
                       
                         <!-- Next and previous buttons -->
@@ -84,11 +54,14 @@
                       </div>                      
                 </div>
                 <div class="pg2">
-                    <h2>Beschrijving product</h2>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Minus, porro et tempore nam dolorem alias, nisi doloribus assumenda voluptatem error at. Quae cum nulla deleniti rem sapiente quibusdam, tenetur nemo? Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam quis tempore cumque iste nemo nam quibusdam aliquid vitae nihil perspiciatis recusandae deserunt optio adipisci doloribus repellat, facilis omnis impedit nobis!</p>
+                    <h2 id="product-naam">Productnaam</h2>
+                    <a>Reviews * * * * *</a>
+                    <br><br><p id="prijs">€ </p>
+                    <br><div id="voorraad">Op voorraad</div>
+                    <br><button id="product-add-to-ww">+ In winkelwagen</button>
                 </div>
                 <div class="pg3"> 
-                    <h2>Beschrijving product</h2>
+                    <br><h2>Beschrijving product</h2>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo, culpa doloremque hic maxime dolorum labore quam, qui ab, ea placeat magni eaque nesciunt at fugit? Doloremque corrupti officiis accusantium dolorum.</p>
                 </div>
                 <div class="pg4">
@@ -104,83 +77,22 @@
                 </div>
             </div>
         </section>
-        <aside class="first">
-            <div class="first">
-                <div class="cat-drime">
-                    <ul>
-                        <li><a></a></li>
-                    </ul>
-                </div>
-                <div id="cat-main">
-                    <h2>Categories</h2>
-                    <div id="sideimg"> 
-                        <a href="#"><img id="categorypng" src="https://i.imgur.com/DZ57HEJ.png"></a>
-                        <a href="#"><img id="categorypng" src="https://i.imgur.com/VHCDSoZ.png"></a>
-                        <a href="#"><img id="categorypng" src="https://i.imgur.com/DZ57HEJ.png"></a>
-                        <a href="#"><img id="categorypng" src="https://i.imgur.com/VHCDSoZ.png"></a>
-                        <a href="#"><img id="categorypng" src="https://i.imgur.com/DZ57HEJ.png"></a>
-                        <a href="#"><img id="categorypng" src="https://i.imgur.com/VHCDSoZ.png"></a>
-                    </div>
-                </div>
-            </div>
-            <div class="second">
-                <p>Social Media</p>
-                <ul>
-                    <li><a aria-hidden="true" class="fab fa-facebook-square" href="www.facebook.com"></a></li>
-                    <li><a aria-hidden="true" class="fab fa-linkedin-in" href="www.linkdin.nl"></a></li>
-                    <li><a aria-hidden="true" class="fab fa-twitter" href="www.twiter.nl"></a></li>
-                    <li><a aria-hidden="true" class="fab fa-instagram" href="www.instagram.nl"></a></li>
-                </ul>
-            </div>
-        </aside>
+        <aside id="aside"></aside>
     </main>
     <!-- site footer onderaan -->
-    <footer>
-        <!-- links in footer -->
-        <div>
-            <div>
-                <h4>Onze Service</h4>
-                <ul>
-                    <li><a href="">Contact opnemen</a></li>
-                    <li><a href="">Betalen</a></li>
-                    <li><a href="">Retourneren</a></li>
-                    <li><a href="">Grantie & Reparatie</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4>Over ons</h4>
-                <ul>
-                    <li><a href="">Bedrijfsgegevens</a></li>
-                    <li><a href="">Nieuws</a></li>
-                    <li><a href="">Werken bij RAMP</a></li>
-                    <li><a href="">Overige informatie</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4>Privacy & Voorwaarden</h4>
-                <ul>
-                    <li><a href="">Algemene voorwaarden</a></li>
-                    <li><a href="">Privacy</a></li>
-                    <li><a href="">Cookies</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4>Zakelijk met ons</h4>
-                <ul>
-                    <li><a href="">Zakelijk verkopen</a></li>
-                    <li><a href="">Zakelijk bestellen</a></li>
-                    <li><a href="">Adverteren</a></li>
-                    <li><a href="">Leveranciers</a></li>
-                    <li><a href="">Tweedehands verkopen</a></li>
-                </ul>
-            </div>
-        </div>
-        <!-- logo at the bottom -->
-        <div>
-            <img src="./images/placeholder_banner2.jpg" alt="Header of the site." height="100%">
-        </div>
-        <!-- bottom discloser -->
-        <h4>* Alle prijzen zijn inclusief BTW en exclusief eventuele <a href="">verzendkosten</a> en servicekosten.</h6>
-    </footer>
+    <footer id="footer"></footer>
+    <script src="js/slideshow.js" defer></script>
+    <script src="js/ramp/flickity.pkgd.js"></script>
+    <script src="js/components/Component.js"></script>
+    <script src="js/components/Nav.js"></script>
+    <script src="js/components/Aside.js"></script>
+    <script src="js/components/Footer.js"></script>
+    <script src="js/components/Product.js"></script>
+    <script src="js/components/Products.js"></script>
+    <script src="js/components/Login.js"></script>
+    <script src="js/components/test.js"></script>
+    
+    <script src="js/API.js"></script>
+    <script src="js/controllers/IndexController.js"></script>
 </body>
 </html>
