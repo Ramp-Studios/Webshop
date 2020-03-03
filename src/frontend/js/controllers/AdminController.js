@@ -50,6 +50,7 @@ class Admin {
             }
         });
 
+
         // Restock a product
         let formRestock = document.getElementById("restockProduct");
         formRestock.addEventListener("submit", async (evt) => {
@@ -57,9 +58,8 @@ class Admin {
             console.log("Restocking");
             let productId = document.getElementById("restockProductId").value;
             let quantity = document.getElementById("restockQuantity").value;
-            api.restockProduct(productId, quantity);
             try {
-                const data = await api.restockProduct(productId, quantity);
+                const data = await api.restockProduct(productId, parseInt(quantity));
                 console.log(data);
                 window.location = '/';
             }

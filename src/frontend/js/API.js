@@ -92,6 +92,8 @@ class API {
     }
 
     async restockProduct(id, quantity) {
+        if (parseInt(quantity)) quantity = parseInt(quantity);
+        else throw `Error: Invalid quantity ${quantity}`
         let response = await this.putData(this.url + '/products/' + id + '/restock', { quantity: quantity });
         if (response.ok) {
             let data = await response.json();
@@ -117,6 +119,22 @@ class API {
         let response = await this.postData(this.url + '/products', formData, true);
         if (response.ok) {
             let data = await response.json();
+            return data;
+        }
+        else {
+            throw `Error: ${response.status} ${response.statusText}`;
+        }
+    }
+
+    //Create a review
+    async createReview(text, rating, productid, token) {
+        let response = await this.putData(this.url + '/products/' + productid + '/review', {
+            "text": String(text),
+            "rating": parseInt(rating)
+        }, token);
+        if (response.ok) {
+            let data = await response.json();
+            console.log("Send review");
             return data;
         }
         else {
@@ -150,11 +168,14 @@ class API {
         });
     }
 
-    putData(url = '', data = {}) {
+    putData(url = '', data = {}, token) {
         // Default options are marked with *
         return fetch(url, {
             method: 'PUT', // *GET, POST, PUT, DELETE, etc.
-            headers: this.headers,
+            headers: token ? {
+                'Content-Type': 'application/json',
+                'x-auth-token': token
+            } : this.headers,
             body: JSON.stringify(data) // body data type must match "Content-Type" header
         });
     }

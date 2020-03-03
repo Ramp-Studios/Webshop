@@ -153,8 +153,8 @@ router.put('/:id/restock', [
                 return;
             }
             const product = await Product.findById(req.params.id);
-            const quantity = req.body.quantity;
-            product.quantityInStock += quantity;
+            const quantity = parseInt(req.body.quantity);
+            product.quantityInStock = parseInt(product.quantityInStock) + quantity;
             await product.save();
             res.json({ msg: "Restock product" });
             return;

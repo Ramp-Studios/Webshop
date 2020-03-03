@@ -8,7 +8,6 @@ window.addEventListener('load', () => {
 class Index {
     constructor() {
         this.loginComponent = new Login(api.isAuthenticated);
-        this.productsComponent = new Products();
     }
 
     async init() {
@@ -33,5 +32,25 @@ class Index {
                 window.location = '/';
             }
         }
+        
+        // Add a review
+        let formAddReview = document.getElementById("addReview");
+        formAddReview.addEventListener("submit", async (evt) => {
+            evt.preventDefault();
+            let form = document.getElementById("addReview");
+            let formData = new FormData(form);
+            for (let p of formData) {
+                console.log(p);
+            }
+            try {
+                const data = await api.createReview(FormData);
+                console.log(data);
+                window.location = '/';
+            }
+            catch (err) {
+                console.error(err);
+                formAddReview.setAttribute("class", "error");
+            }
+        });
     }
 }

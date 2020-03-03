@@ -3,7 +3,8 @@ class Product extends Component {
     //model
     constructor(data) {
         super("article");
-        this.id = data._id.substring(1);
+        data._id = 'a'+data._id;
+        this.id = data._id; //Hier was substring 1 van docenten sheyt
         this.name = data.name;
         this.brand = data.brand;
         this.images = data.images;
@@ -24,9 +25,9 @@ class Product extends Component {
         this.rootElement.innerHTML = `
             <img src="${this.images[0] ? this.images[0] : "https://i.imgur.com/MhpCHIj.png"}">
             <div>
-                <a href="${this.id}">${this.name}</a>
+                <a href="/product.html?product=${this.id}">${this.name}</a>
                 <span>
-                    ${this.description.length < 100 ? this.description : this.description.slice(0, 90) + '<a href="/product.html?product=${this.id}">Lees meer</a>'} 
+                    ${this.description.length < 100 ? this.description : this.description.slice(0, 90) + `... <a href="/product.html?product=${this.id}">Lees meer</a>`} 
                 </span>
                 <span>€${this.price}</span>
                 <div>
@@ -41,9 +42,8 @@ class Product extends Component {
                 </div>
             </div>
         `;
-
-        this.getElementById(this.id).addEventListener('click', () => {
-            this.voegProductInProductList(1, 2);
-        });
+        // document.getElementById(this.id).addEventListener('click', () => {
+        //     this.voegProductInProductList(1, 2);
+        // });
     }
 }

@@ -183,12 +183,19 @@ main {
 }
 main > section {
     min-width: 85%;
-    display: grid;
-
+    display: flex;
+    flex-wrap: wrap;
+    direction: row;
+    margin: 5px;
+}
+main > section > article
+{
+    width: 25%;
 }
 main > section > section {
     padding-top: 30px;
     padding-bottom: 30px;
+    width: 100%;
 }
 /* Aside menu */
 div#cat-main h2 {
@@ -688,7 +695,8 @@ div#nietopvoorraad{
 }
 
 div.numbertext + img{
-    width: 50%;
+    width: 100%;
+    max-width: 60vw;
 }
 
 /* Fading animation */
@@ -801,4 +809,89 @@ div.numbertext + img{
 #aanbevolen-carousel > div > div > div:nth-child(2) > div > span:nth-child(2)
 {
     font-family: 'Roboto Condensed', sans-serif;
+}
+
+/* size of windows */
+.productlistitem{
+    border: 1px solid;
+    display: flex;
+    height: 208px;
+    margin: 0 5px;
+    border-radius: 15px;
+    counter-increment: carousel-cell;
+    width: 500px;
+    border-color: white;
+}
+
+/* Images in productlist */
+.productlistitem > img{
+    height: 200px;
+    width: 200px;
+}
+.productlistitem > div{
+    display: flex;
+    flex-direction: column;
+}
+
+.productlistitem > img{
+    height: 100%;
+    max-width: 50%;
+    float: left;
+}
+.productlistitem > img + div {
+    max-width: 60%;
+    display: flex;
+    flex-direction: column;
+}
+.rating > span {
+    color: var(--main-text-color)
+}
+.productlistitem > div > button {
+    width: 50%;
+    min-width: 150px;
+    background-color: rgb(147, 147, 255);
+    border: none;
+    height: 30px;
+    color: var(--main-text-color);
+    margin-top: -5px;
+}
+.productlistitem > div > button:hover {
+    transform: scale(1.05, 1.05)
+}
+.productlistitem > div > a {
+    text-decoration: none;
+    color: var(--main-text-color)
+}
+.productlistitem > div > a:hover {
+    text-decoration: underline;
+}
+.productlistitem > div > a:active, .productlistitem > div > a:visited {
+    text-decoration: none;
+}
+.productlistitem > div > * {
+    font-weight: 700;
+    margin-left: 10px;
+}
+.productlistitem > div > a + span {
+    font-weight: 500;
+}
+.productlistitem > div > span + span {
+    font-weight: 500;
+    color: red
+}
+.productlistitem > div > div {
+    margin-top: -15px !important;
+    font-weight: 700;
+    font-size: 2rem;
+}
+
+.productlistitem > div > div > span + span + span + span + span + span {
+    font-size: 1rem;
+    margin-left: 5px;
+    color: var(--main-text-color);
+    vertical-align: middle;
+}
+
+.productlistitem > img + div > span + span + span::before {
+    content: "€"
 }
