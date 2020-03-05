@@ -1,9 +1,9 @@
 var request = new XMLHttpRequest()
 placeholder = "https://i.imgur.com/MhpCHIj.png"
 
-request.open('GET', './api/products', true) //Get all products from api
+request.open('GET', './api/products?limit=100000', true) //Get all products from api
 request.onload = function() {
-  fetch('./api/products')
+  fetch('./api/products?limit=100000')
   .then(response => response.json()) //Put all products in a json
   .then(data => {
     let product = data.products//Only first product of array
@@ -42,7 +42,7 @@ request.onload = function() {
         for(z = 0; z <  star; z++){ 
           let element = document.getElementById("reviews");
           let para = document.createElement("a");
-          para.setAttribute('href', ''); //link to review section
+          para.setAttribute('href', '#product-reviews'); //link to review section
           para.setAttribute('class', 'fa fa-star');
           para.setAttribute('aria-hidden', 'true');
           element.appendChild(para);
@@ -54,7 +54,7 @@ request.onload = function() {
           nostar = nostar -1;
           let element = document.getElementById("reviews");
           let para = document.createElement("a");
-          para.setAttribute('href', ''); //link to review section
+          para.setAttribute('href', '#product-reviews'); //link to review section
           para.setAttribute('class', 'fa fa-star-half-o');
           para.setAttribute('aria-hidden', 'true');
           element.appendChild(para);
@@ -63,7 +63,7 @@ request.onload = function() {
         for(z = 0; z < nostar; z++){ //Nostar
           let element = document.getElementById("reviews");
           let para = document.createElement("a");
-          para.setAttribute('href', ''); //link to review section
+          para.setAttribute('href', '#product-reviews'); //link to review section
           para.setAttribute('class', 'fa fa-star-o');
           para.setAttribute('aria-hidden', 'true');
           element.appendChild(para);
@@ -74,7 +74,7 @@ request.onload = function() {
           for(c = 0; c < 5; c++){
             let element = document.getElementById("reviews");
             let para = document.createElement("a");
-            para.setAttribute('href', ''); //link to review section
+            para.setAttribute('href', '#product-reviews'); //link to review section
             para.setAttribute('class', 'fa fa-star-o');
             para.setAttribute('aria-hidden', 'true');
             element.appendChild(para);
@@ -83,7 +83,7 @@ request.onload = function() {
 
         let element = document.getElementById("reviews");
         let para = document.createElement("a");
-        para.setAttribute('href', ''); //link to review section
+        para.setAttribute('href', '#product-reviews'); //link to review section
         para.innerHTML = ` ${avaragereview.toFixed(1)} gemiddelde gebaseerd op ${product[i].reviews.length} beoordelingen`
         element.appendChild(para);
 

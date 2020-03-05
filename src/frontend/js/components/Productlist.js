@@ -10,7 +10,7 @@ function getParameterByName(name) {
 }
 
 async function loadlist() {
-    let response = await fetch((`./api/products`), {
+    let response = await fetch((`./api/products?limit=100000`), {
         method: 'GET',
         headers: {
             'Content-type': 'json/application',
@@ -36,6 +36,14 @@ async function loadlist() {
         }
         return false;
     })
+    if (categories) {
+        const catelements = (document.getElementById('search-categories')).children
+        for (let cat of catelements) {
+            if (categories.includes(cat.children[1].text.toLowerCase())) {
+                cat.control.checked = true;
+            }
+        }
+    }
     const main = document.getElementById('productlist')
     response.forEach((product) => {
         const newdiv = new Product(product)

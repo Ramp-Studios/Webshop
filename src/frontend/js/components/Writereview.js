@@ -25,11 +25,25 @@ if(token.length > 0){
         <input type="submit" value="Submit">
     </form> 
     `
-    element.appendChild(para);  
+    element.appendChild(para);
 
-    async function myFunction() {
-        var rating = document.forms["review"]["rating"].value;
-        var text = document.forms["review"]["text"].value;
-        let response = await api.createReview(text, rating, cleanString, token);
-    }
+    let formAddReview = document.getElementById("addReview");
+    formAddReview.addEventListener("submit", async (evt) => {
+        evt.preventDefault();
+        let form = document.getElementById("addReview");
+        let formData = new FormData(form);
+        for (let p of formData) {
+            console.log(p);
+        }
+        try {
+            var rating = document.forms["review"]["rating"].value;
+            var text = document.forms["review"]["text"].value;
+            let response = await api.createReview(text, rating, cleanString, token);
+            location.reload();
+        }
+        catch (err) {
+            console.error(err);
+            formAddReview.setAttribute("class", "error");
+        }
+    });
 }

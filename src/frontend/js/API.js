@@ -32,9 +32,9 @@ class API {
 
     async createUser(name, email, password) {
         let response = await this.postData(this.url + '/users', {
-            name,
-            email,
-            password
+            "name": String(name),
+            "email": String(email),
+            "password": String(password)
         });
         if (response.ok) {
             let data = await response.json();
@@ -43,10 +43,8 @@ class API {
             return data;
         }
         else {
-            throw `Error: ${response.status} ${response.statusText}`;
+            return await response.json();
         }
-
-
     }
 
     async loginUser(email, password) {
@@ -157,7 +155,8 @@ class API {
             request.body = data;
         }
         // Default options are marked with *
-        return fetch(url, request);
+        const result = fetch(url, request);
+        return result;
     }
 
     getData(url = '') {
