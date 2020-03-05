@@ -14,8 +14,11 @@ document.getElementById("nav").innerHTML = `
             <div class="dropdown-content">
                 <a href="../">Homepage</a>
                 <a href="../productlist.html?c=elektronika">Elektronika</a>
-                <a href="#">Elektronika Kits</a>
+                <a href="../productlist.html?c=elektronika%20kits">Elektronika kits</a>
                 <a href="../productlist.html?c=boeken">Boeken</a>
+                <a href="../productlist.html?c=robotica">Robotica</a>
+                <a href="../productlist.html?c=gereedschap">Gereedschap</a>
+    
             </div>
         </div>
         <a href="/"><img src="https://i.imgur.com/MhpCHIj.png"></a>
@@ -33,6 +36,14 @@ document.getElementById("nav").innerHTML = `
                     </label>
                     <label class="container">
                         <input type="checkbox"><a>Boeken</a>
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="container">
+                        <input type="checkbox"><a>Robotica</a>
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="container">
+                        <input type="checkbox"><a>Gereedschap</a>
                         <span class="checkmark"></span>
                     </label>
                 </div>

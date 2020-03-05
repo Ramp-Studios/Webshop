@@ -134,7 +134,7 @@ class API {
         }, token);
         if (response.ok) {
             let data = await response.json();
-            console.log("Send review");
+            console.log("Review successfully send");
             return data;
         }
         else {

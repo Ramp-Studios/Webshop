@@ -129,11 +129,13 @@ a:visited {
 
 
     /* Patryk's color */
-    --main-theme-color: #404040;
+    /* --main-theme-color: #404040;  Disabled bcs of white theme test*/
+    --main-theme-color: #FFFFFF;
     --secondary-color: #222222;
     --third-color: #2B2B2B;
     --nav-accent-color: #222222;
-    --main-text-color: white;
+    /* --main-text-color: white; Disabled bcs of white theme test*/
+    --main-text-color: black;
     --secondary-text-color: #ccc;
     --faded-text-color: #ccc;
     --main-hover-color: #7e7e7e;
@@ -186,7 +188,7 @@ main > section {
     display: flex;
     flex-wrap: wrap;
     direction: row;
-    margin: 5px;
+    margin: 20px 10px;
 }
 main > section > article
 {
@@ -273,6 +275,7 @@ footer > div {
 }
 /* header van elke sectie in de lijst van links */
 footer > div > div > h4 {
+    margin: 20px 0px 5px 0px;
     font-weight: 700;
     font-size: medium;
     letter-spacing: 1px;
@@ -342,10 +345,11 @@ footer > h4 > a:hover, footer > h4 > a:active {
 }
 .carousel-cell {
     height: 208px;
-    margin: 0 5px;
+    margin: 5px 5px;
     border-radius: 15px;
     counter-increment: carousel-cell;
-    border: white solid 1px;
+    border: solid #F4F4F4 2px;
+    box-shadow: 10px 10px 5px -4px rgba(0,0,0,0.18);
 }
 #aanbevolen > div > div > div > .carousel-cell {
     width: calc(33% - 4px);

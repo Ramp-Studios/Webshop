@@ -53,7 +53,7 @@
                 <div class="pg2">
                     <p id="product-naam" style="font-size: 2rem;">Productnaam</p>
                     <p id="category">Category: </p>
-                    <a id="reviews">Reviews * * * * *</a>
+                    <a id="reviews">Reviews: </a>
                     <br><br><p id="prijs">€ </p>
                     <br><div id="voorraad">Op voorraad</div>
                     <br><button id="product-add-to-ww">+ In winkelwagen</button>
@@ -63,45 +63,17 @@
                     <p id="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo, culpa doloremque hic maxime dolorum labore quam, qui ab, ea placeat magni eaque nesciunt at fugit? Doloremque corrupti officiis accusantium dolorum.</p>
                 </div>
                 <div class="pg4">
-                    <h2>Product specificaties</h2>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Omnis est similique minima aliquam molestias molestiae! Quia alias sunt eos, error a, rem voluptatibus voluptate, consequatur officiis laudantium quasi dicta accusantium?</p>
+                    <h2>Product reviews:</h2>
+                    <p id="product-reviews"></p><br>
                 </div>
                 <div class="pg5">
                     <!-- Reviews -->
-                    <form id="addReview" name="review" action="/action_page.php" onsubmit="myFunction()">
-                        Rating:
-                        <input type="radio" id="1" name="rating" value="1" required>
-                        <label for="1">1</label>
-                        <input type="radio" id="2" name="rating" value="2">
-                        <label for="2">2</label>
-                        <input type="radio" id="3" name="rating" value="3">
-                        <label for="3">3</label>
-                        <input type="radio" id="4" name="rating" value="4">
-                        <label for="4">4</label>
-                        <input type="radio" id="5" name="rating" value="5">
-                        <label for="5">5</label>
-
-                        <br><label for="review">Review:</label><br>
-                        <input type="text" id="text" name="text" ><br><br>
-                        <input type="submit" value="Submit">
-                    </form> 
+                    <p id="product-reviewform"></p><br>
                 </div>
             </div>
         </section>
         <aside id="aside"></aside>
     </main>
-    <!-- site footer onderaan -->
-    <script>
-        const queryString = window.location.search;
-        const cleanString = queryString.replace("?product=a","");
-        const token = localStorage.getItem('token');
-        console.log(cleanString)
-        async function myFunction() {
-            var rating = document.forms["review"]["rating"].value;
-            var text = document.forms["review"]["text"].value;
-            let response = await api.createReview(text, rating, cleanString, token);
-        }
-    </script>
     <footer id="footer"></footer>
     <script src="js/ramp/slideshow.js" defer></script>
     <script src="js/ramp/flickity.pkgd.js"></script>
@@ -116,5 +88,6 @@
     
     <script src="js/API.js"></script>
     <script src="js/controllers/IndexController.js"></script>
+    <script src="js/components/Writereview.js"></script>
 </body>
 </html>
