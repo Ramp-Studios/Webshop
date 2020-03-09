@@ -1,15 +1,23 @@
 const express = require('express');
-const request = require('request');
-const config = require('config');
 const router = express.Router();
 const auth = require('../../middleware/auth');
 const { check, validationResult } = require('express-validator');
 
 const Profile = require('../../models/Profile');
+const {messageResponse, successResponse, serverErrorResponse, validationErrorResponse} = require('../../util/responses');
 
-// @route    GET api/profile/me
-// @desc     Get current users profile
-// @access   Private
+/**
+ * @api {get} api/profile/me Get current user profile
+ * @apiName GetMyProfile
+ * @apiGroup Profile
+ * @apiPermission User
+ * 
+ * @apiUse ProfileSuccess
+ * @apiUse NoProfileFoundError
+ * @apiUse HeaderAuthToken
+ * @apiUse NoTokenError
+ * @apiUse ServerError
+ */
 router.get('/me', auth,
     async (req, res) => {
         try {
@@ -19,21 +27,41 @@ router.get('/me', auth,
             );
 
             if (!profile) {
-                return res.status(400).json({ msg: 'There is no profile for this user' });
+                return res.status(400).json(messageResponse('There is no profile for this user.', false));
             }
-
-            res.json(profile);
+            res.json(successResponse(profile));
         }
         catch (err) {
             console.error(err.message);
-            res.status(500).send('Server Error');
+            res.status(500).json(serverErrorResponse);
         }
     }
 );
 
-// @route    PUT api/profile/address
-// @desc     Add profile address
-// @access   Private
+/**
+ * @api {put} api/profile/address Add/Update address
+ * @apiName UpdateAddress
+ * @apiGroup Profile
+ * @apiPermission User
+ * 
+ * @apiParam {String} street       Mandatory Street.
+ * @apiParam {Number} houseNumber  Mandatory House number .
+ * @apiParam {String} zipcode      Mandatory zipcode.
+ * @apiParam {String} city         Mandatory city.
+ * @apiParamExample {json} Request-Example: 
+ *      {
+ *          "street": "Tinwerf",
+ *          "houseNumber": 16,
+ *          "zipcode": "2544ED",
+ *          "city": "Den Haag",
+ *      }
+ * 
+ * @apiUse ProfileSuccess
+ * @apiUse ValidationError
+ * @apiUse HeaderAuthToken
+ * @apiUse NoTokenError
+ * @apiUse ServerError
+ */
 router.put('/address', [
         auth,
         [
@@ -54,7 +82,7 @@ router.put('/address', [
     async (req, res) => {
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
-            return res.status(400).json({ errors: errors.array() });
+            return res.status(400).json(validationErrorResponse(errors.array(), 400));
         }
 
         // Get the values from the req.body
@@ -76,20 +104,34 @@ router.put('/address', [
                 { $set: profileFields },
                 { new: true, upsert: true });
 
-            // await profile.save();
-
-            res.json(profile);
+            res.json(successResponse(profile));
         }
         catch (err) {
             console.error(err.message);
-            res.status(500).send('Server Error');
+            res.status(500).json(serverErrorResponse);
         }
     }
 );
 
-// @route    DELETE api/profile
-// @desc     Delete profile, user & posts
-// @access   Private
+/**
+ * @api {delete} api/profile Delete profile
+ * @apiName DeleteProfile
+ * @apiGroup Profile
+ * @apiPermission User
+ * 
+ * @apiSuccess {Boolean}  success               if the request was a success
+ * @apiSuccess {String}   msg                   The message of delete
+ * @apiSuccessExample {json} Success-Response:
+ *     HTTP/1.1 200 OK
+ *     {
+ *       "success": true,
+ *       "msg": "User profile deleted."
+ *     }
+ * 
+ * @apiUse HeaderAuthToken
+ * @apiUse NoTokenError
+ * @apiUse ServerError
+ */
 router.delete('/', auth,
     async (req, res) => {
         try {
@@ -98,11 +140,11 @@ router.delete('/', auth,
             // Remove user
             // await User.findOneAndRemove({ _id: req.user.id });
 
-            res.json({ msg: 'User profile deleted' });
+            res.json(messageResponse('User profile deleted.', true));
         }
         catch (err) {
             console.error(err.message);
-            res.status(500).send('Server Error');
+            res.status(500).json(serverErrorResponse);
         }
     }
 );

@@ -53,10 +53,7 @@ document.getElementById("nav").innerHTML = `
             </form>
         </div>
         <div style="flex-grow: 0.5;" id="login"></div>
-        <div id="ww"></div>
-        <div> 
-            <button style="width: 48px; height: 48px; margin: 1px;"><img src="https://cdn.icon-icons.com/icons2/1744/PNG/512/3643737-cart-drop-shop-shopping-trolly_113425.png" style="height: 100%; width: 100%;" alt="Winkel Wagen"></button>
-        </div>`
+        <div id="ww"></div>`
 
 const searchbar = document.getElementById('search');
 searchbar.children.search.value = currentSearch;

@@ -1,6 +1,4 @@
-const token = localStorage.getItem('token');
-
-if(!token){
+if(api.hasToken()){
     let element = document.getElementById("register")
     let para = document.createElement("div");
     para.innerHTML = `
@@ -20,6 +18,7 @@ if(!token){
         <input type="submit" value="Submit">
     </form> 
     `
+    
     element.appendChild(para);
 
     let formAddReview = document.getElementById("addUser");
@@ -32,7 +31,6 @@ if(!token){
             var email = document.forms["register"]["email"].value;
             var password = document.forms["register"]["password"].value;
             try {
-                console.log(api)
                 var response = await api.createUser(name, email, password);
                 if (response.errors && response.errors[0]) {
                     alert(response.errors[0].msg)

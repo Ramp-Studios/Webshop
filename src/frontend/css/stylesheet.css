@@ -205,7 +205,6 @@ div#cat-main h2 {
 
 }
 main > aside {
-    min-width: 15%;
     display: flex;
     flex-direction: column;
 }
@@ -234,8 +233,7 @@ li.aside-cat{
     padding: 1px;
     width: 50%
 }
-#cat-main > div > a > img 
-{
+#cat-main > div > a > img {
     width: 100%;
     margin: 0;
 }
@@ -346,7 +344,7 @@ footer > h4 > a:hover, footer > h4 > a:active {
 .carousel-cell {
     height: 208px;
     margin: 5px 5px;
-    border-radius: 15px;
+    border-radius: 0px; /* was 15 */
     counter-increment: carousel-cell;
     border: solid #F4F4F4 2px;
     box-shadow: 10px 10px 5px -4px rgba(0,0,0,0.18);
@@ -898,4 +896,37 @@ div.numbertext + img{
 
 .productlistitem > img + div > span + span + span::before {
     content: "€"
+}
+
+img#image0{
+    height: 100%;
+}
+img#image1{
+    height: 100%;
+}
+img#image2{
+    height: 100%;
+}
+
+button#Winkelwagen{
+    background-color: transparent; /* Color of box */
+    color: white; /* Color of cart icon */
+    width: 48px; 
+    height: 48px; 
+    margin: 1px;
+    border: none;
+    text-decoration: none;
+    font-size: 1.5em;
+}
+div#ww-items{
+
+}
+div#ww-items > div > p{
+    width: 80vw;
+}
+div#ww-totaal > div > p{
+    bottom: 0px;
+}
+main#checkout{
+    min-height: 50vh;
 }

@@ -12,7 +12,11 @@ class API {
     }
 
     hasToken() {
-        return localStorage.getItem('token') !== undefined || localStorage.getItem('token') !== '';
+        if(localStorage.getItem('token')){
+            return true
+        }else{
+            return false
+        }
     }
 
     setAuthToken(token) {
@@ -78,8 +82,8 @@ class API {
         }
     }
 
-    async getProducts() {
-        let response = await this.getData(this.url + '/products');
+    async getProducts(id) {
+        let response = await this.getData(this.url + '/products' + `${id ? '/' + id : ''}`);
         if (response.ok) {
             let data = await response.json();
             return data;
@@ -88,6 +92,7 @@ class API {
             throw `Error: ${response.status} ${response.statusText}`;
         }
     }
+
 
     async restockProduct(id, quantity) {
         if (parseInt(quantity)) quantity = parseInt(quantity);
@@ -140,6 +145,40 @@ class API {
         }
     }
 
+    //Add to cart
+    async addToCart(productid, token, amount) {
+        let data2 = {};
+        if (amount) data2.amount = amount;
+        let response = await this.putData(this.url + '/productslists/cart/product/' + productid, data2, token);
+        if (response.ok) {
+            let data = await response.json();
+            console.log("Product successfully added");
+            return data;
+        }
+        else {
+            throw `Error: ${response.status} ${response.statusText}`;
+        }
+    }
+
+    //Remove from cart
+    async removeFromCart(productid, token, amount) {
+        let response = await this.addToCart(productid, token, amount ? 0 - amount : -1)
+        return response;
+    }
+
+    //Get cart
+    async getCart(token) {
+        let response = await this.getData(this.url + '/productslists/cart/', token);
+        if (response.ok) {
+            let data = await response.json();
+            console.log("Cart successfully received");
+            return data;
+        }
+        else {
+            throw `Error: ${response.status} ${response.statusText}`;
+        }
+    }
+
     // API Data calls GET, POST, PUT, DELETE
     postData(url = '', data = {}, isFormData = false) {
         let request = {
@@ -159,11 +198,14 @@ class API {
         return result;
     }
 
-    getData(url = '') {
+    getData(url = '', token) { //Allah dit is veranderd
         // Default options are marked with *
         return fetch(url, {
             method: 'GET', // *GET, POST, PUT, DELETE, etc.
-            headers: this.headers
+            headers: token ? {
+                'Content-Type': 'application/json',
+                'x-auth-token': token
+            } : this.headers
         });
     }
 
@@ -171,6 +213,7 @@ class API {
         // Default options are marked with *
         return fetch(url, {
             method: 'PUT', // *GET, POST, PUT, DELETE, etc.
+            //mode: 'same-origin', // no-cors, *cors, same-origin
             headers: token ? {
                 'Content-Type': 'application/json',
                 'x-auth-token': token
@@ -179,11 +222,14 @@ class API {
         });
     }
 
-    deleteData(url = '', data = {}) {
+    deleteData(url = '', data = {}, token) {
         // Default options are marked with *
         return fetch(url, {
             method: 'DELETE', // *GET, POST, PUT, DELETE, etc.
-            headers: this.headers,
+            headers: token ? {
+                'Content-Type': 'application/json',
+                'x-auth-token': token
+            } : this.headers,
             body: JSON.stringify(data) // body data type must match "Content-Type" header
         });
     }

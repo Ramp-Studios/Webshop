@@ -2,7 +2,7 @@ const queryString = window.location.search;
 const cleanString = queryString.replace("?product=a","");
 const token = localStorage.getItem('token');
 
-if(token.length > 0){
+if(api.hasToken()){
     let element = document.getElementById("product-reviewform")
     let para = document.createElement("div");
     para.innerHTML = `

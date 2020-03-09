@@ -7,10 +7,31 @@ const config = require('config');
 const { check, validationResult } = require('express-validator');
 
 const User = require('../../models/User');
+const {serverErrorResponse, successResponse, errorResponse, validationErrorResponse} = require('../../util/responses');
 
-// @route    POST api/users
-// @desc     Register user
-// @access   Public
+/**
+ * @api {post} api/users Create user
+ * @apiName CreateUser
+ * @apiGroup Users
+ * @apiPermission none
+ * 
+ * @apiParam {String} name              Mandatory Name.
+ * @apiParam {String} email             Mandatory E-mail.
+ * @apiParam {String{6..}} password     Mandatory password with at least 6 characters.
+ * @apiParam {String} [role=guest]      Optional role, if not send will fall to guest.
+ * @apiParamExample {json} Request-Example:
+ *      {
+ *      	"name": "admin",
+ *      	"email": "admin@gmail.com",
+ *      	"password": "testtest",
+ *          "role": "admin"
+ *      }
+ * 
+ * @apiUse UserCreateSuccess
+ * @apiUse UserExistsError
+ * @apiUse ValidationError
+ * @apiUse ServerError
+ */
 router.post('/', [
     check('name', 'Name is required')
         .not()
@@ -25,9 +46,7 @@ router.post('/', [
     async (req, res) => {
         const errors = validationResult(req);
         if (!errors.isEmpty()) {
-            return res.status(400).json({
-                errors: errors.array()
-            });
+            return res.status(400).json(validationErrorResponse(errors.array(), 400));
         }
 
         let { name, email, password, role } = req.body;
@@ -36,9 +55,7 @@ router.post('/', [
             let user = await User.findOne({ email });
 
             if (user) {
-                return res.status(400).json({
-                    errors: [{ msg: 'User already exists' }]
-                });
+                return res.status(400).json(errorResponse('User already exists.', 400));
             }
 
             const avatar = gravatar.url(email, {
@@ -71,15 +88,17 @@ router.post('/', [
                 { expiresIn: 360000 },
                 (err, token) => {
                     if (err) throw err;
-                    res.json({ token });
+                    res.json(successResponse({token}));
                 }
             );
         }
         catch (err) {
             console.error(err.message);
-            res.status(500).send('Server error');
+            res.status(500).json(serverErrorResponse);
         }
     }
 );
 
 module.exports = router;
+
+

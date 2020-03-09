@@ -1,5 +1,5 @@
 var request = new XMLHttpRequest()
-placeholder = "https://i.imgur.com/MhpCHIj.png"
+placeholder = "../../img/productplaceholder.jpg"
 
 request.open('GET', './api/products?limit=100000', true) //Get all products from api
 request.onload = function() {
@@ -71,6 +71,7 @@ request.onload = function() {
 
         //No rating at all
         if(isNaN(avaragereview)){
+          avaragereview = 0;
           for(c = 0; c < 5; c++){
             let element = document.getElementById("reviews");
             let para = document.createElement("a");

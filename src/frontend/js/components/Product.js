@@ -23,7 +23,7 @@ class Product extends Component {
         let rating = 5;
         if (!this.reviews[0]) rating = 3 
         this.rootElement.innerHTML = `
-            <img src="${this.images[0] ? this.images[0] : "https://i.imgur.com/MhpCHIj.png"}">
+            <img src="${this.images[0] ? this.images[0] : "../../img/productplaceholder.jpg"}">
             <div>
                 <a href="/product.html?product=${this.id}">${this.name}</a>
                 <span>
@@ -38,7 +38,7 @@ class Product extends Component {
                     <span style="color: ${rating >= 5 ? "rgb(255, 225, 0)" : "rgb(51, 51, 51)"};">⋆</span>
                     <span>(${this.reviews.length})</span>
                 </div>
-                    <button id="${this.id}" class="addProduct">🛒 Add to cart</button>
+                    <button id="product-add-to-ww" class="addProduct">🛒 Add to cart</button>
                 </div>
             </div>
         `;
