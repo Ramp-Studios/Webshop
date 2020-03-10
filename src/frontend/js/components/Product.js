@@ -27,7 +27,7 @@ class Product extends Component {
             <div>
                 <a href="/product.html?product=${this.id}">${this.name}</a>
                 <span>
-                    ${this.description.length < 100 ? this.description : this.description.slice(0, 90) + `... <a href="/product.html?product=${this.id}">Lees meer</a>`} 
+                    ${this.description.length < 50 ? this.description : this.description.slice(0, 45) + `... <a href="/product.html?product=${this.id}">Lees meer</a>`} 
                 </span>
                 <span>€${this.price}</span>
                 <div>
@@ -38,7 +38,7 @@ class Product extends Component {
                     <span style="color: ${rating >= 5 ? "rgb(255, 225, 0)" : "rgb(51, 51, 51)"};">⋆</span>
                     <span>(${this.reviews.length})</span>
                 </div>
-                    <button id="product-add-to-ww" class="addProduct">🛒 Add to cart</button>
+                    <button class="product-add-to-ww" name="${this.id}">🛒 Add to cart</button>
                 </div>
             </div>
         `;

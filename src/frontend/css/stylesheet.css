@@ -410,8 +410,8 @@ footer > h4 > a:hover, footer > h4 > a:active {
     color: var(--main-text-color)
 }
 .carousel-cell > div > button {
-    width: 50%;
-    background-color: rgb(147, 147, 255);
+    width: 55%;
+    background-color:#ff9900;
     border: none;
     height: 30px;
     color: var(--main-text-color);
@@ -419,6 +419,9 @@ footer > h4 > a:hover, footer > h4 > a:active {
 }
 .carousel-cell > div > button:hover {
     transform: scale(1.05, 1.05)
+}
+.carousel-cell > div > button:active {
+    background-color: green;
 }
 .carousel-cell > div > a {
     text-decoration: none;
@@ -482,6 +485,12 @@ nav > a > img
     color: white;
     background-color: var(--nav-accent-color);
     outline: none;
+    height: 0px;
+    overflow: hidden;
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
 }
 /* DROPDOWN STYLING */
 .dropdown {
@@ -929,4 +938,8 @@ div#ww-totaal > div > p{
 }
 main#checkout{
     min-height: 50vh;
+}
+
+i#cart-items{
+    color: white;
 }

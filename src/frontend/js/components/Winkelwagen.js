@@ -1,16 +1,9 @@
 placeholder = "../../img/productplaceholder.jpg"
 let totaalprijs = 0;
 let totaalproducten = 0;
+let productsincart = 0;
 
-//Nav winkelwagen button
-if(api.hasToken()){
-    let element = document.getElementById("ww")
-    let para = document.createElement("div");
-    para.innerHTML = `
-        <button id="Winkelwagen" onclick="window.location.href='/checkout.html'"><i aria-hidden="true" class="fas fa-shopping-cart"></i></button>
-    `
-    element.appendChild(para);
-}
+loadWWbutton()
 
 //Load checkout products
 if(window.location.pathname == "/checkout.html"){
@@ -55,4 +48,23 @@ async function loadCart() {
 async function remove(id, amount){
     let x = await api.removeFromCart(id, localStorage.getItem('token'), amount ? amount : null)
     location.reload();
+}
+
+//Nav winkelwagen button
+async function loadWWbutton() {
+    let cart = await api.getCart(localStorage.getItem('token'));
+
+    for(let i = 0; i < cart.products.length; i++){
+        productsincart += cart.products[i].amount
+    }
+
+    if(api.hasToken()){
+        let element = document.getElementById("ww")
+        let para = document.createElement("div");
+        para.innerHTML = `
+            <button id="Winkelwagen" onclick="window.location.href='/checkout.html'"><i aria-hidden="true" class="fas fa-shopping-cart"></i></button>
+            <i id="cart-items" href='/checkout.html'>${productsincart}<i>
+        `
+        element.appendChild(para);
+    }
 }
