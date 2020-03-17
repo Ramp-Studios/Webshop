@@ -1,24 +1,26 @@
-if(api.hasToken()){
+if(localStorage.getItem('token') <= 0){
     let element = document.getElementById("register")
     let para = document.createElement("div");
+    para.id = "register-form";
     para.innerHTML = `
-    <form id="addUser" name="register" action="/action_page.php">
-        Register:
+    <form class="register-div" id="addUser" name="register" action="/action_page.php">
+        <h2>Register:</h2>
         <!-- Name -->
-        <br><label for="name">name:</label><br>
-        <input type="text" id="name" name="name"><br><br>
+        <br><label class="register" for="name">Name:</label>
+        <input type="text" id="name" name="name">
 
         <!-- email -->
-        <br><label for="email">email:</label><br>
-        <input type="text" id="email" name="email"><br><br>
+        <br><label class="register" for="email">E-mail:</label>
+        <input type="text" id="email" name="email">
 
         <!-- password -->
-        <br><label for="password">password:</label><br>
-        <input type="text" id="password" name="password"><br><br>
-        <input type="submit" value="Submit">
+        <br><label class="register" for="password">Password:</label>
+        <input type="password" type="text" id="password" name="password">
+
+        <input type="submit" value="Submit" class="button">
     </form> 
     `
-    
+
     element.appendChild(para);
 
     let formAddReview = document.getElementById("addUser");
@@ -39,7 +41,7 @@ if(api.hasToken()){
                 }
                 //alert(response);
                 return response;
-              } catch (e) {
+                } catch (e) {
                 console.log(e);
             }
         }

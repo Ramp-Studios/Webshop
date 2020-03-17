@@ -12,33 +12,42 @@ class Product extends Component {
         this.price = data.price;
         this.quantityInStock = data.quantityInStock;
         this.reviews = data.reviews;
-        this.initView();
+        this.initView(data.type);
     }
 
     voegProductInProductList(nameOfList, product) {
         alert("Voeg toe");
     }
 
-    initView() {
+    initView(type) {
         let rating = 5;
-        if (!this.reviews[0]) rating = 3 
+        if (!this.reviews[0]) rating = 3
+        else {
+            let totalratings = 0;
+            for (let i = 0; i < this.reviews.length; i++) {
+                totalratings += this.reviews[i].rating;
+            }
+            rating = totalratings / this.reviews.length;
+        }
+        console.log(type)
         this.rootElement.innerHTML = `
             <img src="${this.images[0] ? this.images[0] : "../../img/productplaceholder.jpg"}">
-            <div>
-                <a href="/product.html?product=${this.id}">${this.name}</a>
+            <div style="height: 100%; display: flex;">
+                <a href="/product.html?product=${this.id}" style="margin-left: 10px; font-weight: 700;">${this.name}</a>
                 <span>
-                    ${this.description.length < 50 ? this.description : this.description.slice(0, 45) + `... <a href="/product.html?product=${this.id}">Lees meer</a>`} 
+                    ${this.description.length < ((!type || type === 'top10') ? 90 : 55) ? this.description : this.description.slice(0, ((!type || type === 'top10') ? 80 : 45)) + `... <a href="/product.html?product=${this.id}">Lees meer</a>`} 
                 </span>
-                <span>€${this.price}</span>
-                <div>
+                <span ${type ? `style="position: fixed; bottom: 64px;"` : ''}>€${this.price.toFixed(2)}</span>
+                <div style="${type ? `position: fixed; bottom: 37px;` : ''} display: flex">
                     <span style="color: ${rating >= 1 ? "rgb(255, 225, 0)" : "rgb(51, 51, 51)"};">⋆</span>
-                    <span style="color: ${rating >= 2 ? "rgb(255, 225, 0)" : "rgb(51, 51, 51)"};">⋆</span>
-                    <span style="color: ${rating >= 3 ? "rgb(255, 225, 0)" : "rgb(51, 51, 51)"};">⋆</span>
-                    <span style="color: ${rating >= 4 ? "rgb(255, 225, 0)" : "rgb(51, 51, 51)"};">⋆</span>
-                    <span style="color: ${rating >= 5 ? "rgb(255, 225, 0)" : "rgb(51, 51, 51)"};">⋆</span>
-                    <span>(${this.reviews.length})</span>
+                    <span style="color: ${rating >= 1.5 ? "rgb(255, 225, 0)" : "rgb(51, 51, 51)"};">⋆</span>
+                    <span style="color: ${rating >= 2.5 ? "rgb(255, 225, 0)" : "rgb(51, 51, 51)"};">⋆</span>
+                    <span style="color: ${rating >= 3.5 ? "rgb(255, 225, 0)" : "rgb(51, 51, 51)"};">⋆</span>
+                    <span style="color: ${rating >= 4.5 ? "rgb(255, 225, 0)" : "rgb(51, 51, 51)"};">⋆</span>
+                    <span style="font-size: 1rem; margin-top: 0.8rem;">(${this.reviews.length})</span>
                 </div>
-                    <button class="product-add-to-ww" name="${this.id}">🛒 Add to cart</button>
+                <div>
+                    <button class="product-add-to-ww addtocart" name="${this.id}" ${type ? `style="position: fixed; bottom: 15px;"` : ''}><i class="fas fa-shopping-basket"></i> Add to cart</button>
                 </div>
             </div>
         `;

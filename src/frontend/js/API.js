@@ -198,11 +198,11 @@ class API {
         return result;
     }
 
-    getData(url = '', token) { //Allah dit is veranderd
+    getData(url = '', token) {
         // Default options are marked with *
         return fetch(url, {
             method: 'GET', // *GET, POST, PUT, DELETE, etc.
-            headers: token ? {
+            headers: token ? { //Dit veranderd om ook de token te gebruiken
                 'Content-Type': 'application/json',
                 'x-auth-token': token
             } : this.headers

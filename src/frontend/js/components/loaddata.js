@@ -18,6 +18,7 @@ async function load(type) {
     for (let i = 0; i < 10; i++) {
         const data = response[i];
         if (!data) break;
+        data['type'] = type;
         const newdiv = new Product(data);
         newdiv.rootElement.className = 'carousel-cell'
         carousel.appendChild(newdiv.rootElement);

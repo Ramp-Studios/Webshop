@@ -63,7 +63,7 @@ async function loadWWbutton() {
         let para = document.createElement("div");
         para.innerHTML = `
             <button id="Winkelwagen" onclick="window.location.href='/checkout.html'"><i aria-hidden="true" class="fas fa-shopping-cart"></i></button>
-            <i id="cart-items" href='/checkout.html'>${productsincart}<i>
+            <i id="cart-items" href='/checkout.html'>${productsincart} items<i>
         `
         element.appendChild(para);
     }

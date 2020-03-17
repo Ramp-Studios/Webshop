@@ -31,7 +31,7 @@ if(window.location.pathname == "/" || window.location.pathname == "/index.html")
                         setTimeout(() => { //Changes the number next to cart +1 when clicking once
                             let cartitems = document.getElementById("cart-items")
                             cartitems.innerHTML = `
-                                    <i id="cart-items" href='/checkout.html'>${productsincartrefresh}<i>
+                                    <i id="cart-items" href='/checkout.html'>${productsincartrefresh} items<i>
                                 `
                         }, 60);
                     }
@@ -54,7 +54,7 @@ if(window.location.pathname == "/" || window.location.pathname == "/index.html")
                 setTimeout(() => { //Changes the number next to cart +1 when clicking once
                     let cartitems = document.getElementById("cart-items")
                     cartitems.innerHTML = `
-                            <i id="cart-items" href='/checkout.html'>${productsincartrefresh}<i>
+                            <i id="cart-items" href='/checkout.html'>${productsincartrefresh} items<i>
                         `
                 }, 60);
             }

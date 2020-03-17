@@ -17,8 +17,10 @@ class Login extends Component {
             <input type="text" placeholder="E-mail" name="email" id="email" value="">
             <input type="password" placeholder="Password" E-mail" name="password" id="password" value="">
             <input class="button" type="submit" value="Login">
-            <a class="button" href = "/register.html">register</a>`
+            <a class="button" href = "/register.html">Register</a>`
         }
+
+        if (this.isLoggedIn) this.rootElement.style = 'background-color: #008cba; border-radius: 0.25rem; color: white; text-decoration: none; font-weight: 700; margin: 0.25rem; margin-top: auto; margin-bottom: auto;padding: 0.5rem 1rem;'
         this.rootElement.id = id;
         this.rootElement.innerHTML = innerHTML;
         this.rootElement.addEventListener(event, (e) => this.onEvent(e));

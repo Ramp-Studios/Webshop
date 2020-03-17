@@ -7,10 +7,11 @@ function getParameterByName(name) {
     if (!results[2]) return '';
     return decodeURIComponent(results[2].replace(/\+/g, ' '));
 }
+
 const currentSearch = getParameterByName('q')
 document.getElementById("nav").innerHTML = `
         <div class="dropdown">
-            <button class="dropbtn">☰</button>
+            <button class="dropbtn"><i aria-hidden="true" class="fas fa-bars"></i></button>
             <div class="dropdown-content">
                 <a href="../">Homepage</a>
                 <a href="../productlist.html?c=elektronika">Elektronika</a>
@@ -24,7 +25,7 @@ document.getElementById("nav").innerHTML = `
         <a href="/"><img src="https://i.imgur.com/MhpCHIj.png"></a>
         <div class="search-container">
             <div class="dropdown">
-                <button class="dropbtn"><img src="./img/drop-down-arrow.png" style="height: 31px" alt=""></button>
+                <button class="dropbtn"><i aria-hidden="true" class="fas fa-sliders-h"></i></button>
                 <div class="dropdown-content" id="search-categories">
                     <label class="container">
                         <input type="checkbox"><a>Elektronika</a>
@@ -52,9 +53,11 @@ document.getElementById("nav").innerHTML = `
                 <input type="text" placeholder=" Search.." name="search">
             </form>
         </div>
+        <p id="username"></p>
         <div style="flex-grow: 0.5;" id="login"></div>
         <div id="ww"></div>`
 
+getusername();
 const searchbar = document.getElementById('search');
 searchbar.children.search.value = currentSearch;
 
@@ -74,3 +77,13 @@ function submitting(event) {
     else window.location.href = `productlist.html`; 
 }
 searchbar.addEventListener('submit', submitting);
+
+async function getusername(){
+    console.log("Test")
+    if(localStorage.getItem('token').length > 1){
+        console.log("Test2")
+        let user = await api.getUser(localStorage.getItem('token'));
+        let userelement = document.getElementById("username")
+        userelement.innerHTML = `Logged in as: ${user.name}`
+    }
+}
