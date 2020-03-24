@@ -998,3 +998,9 @@ button.addtocart:active {
 button.addtocart:hover {
     transform: scale(1.05, 1.05)
 }
+
+#description{
+    width: 70vw;
+    margin-left: auto;
+    margin-right: auto;
+}
