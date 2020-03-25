@@ -29,7 +29,6 @@ class Product extends Component {
             }
             rating = totalratings / this.reviews.length;
         }
-        console.log(type)
         this.rootElement.innerHTML = `
             <img src="${this.images[0] ? this.images[0] : "../../img/productplaceholder.jpg"}">
             <div style="height: 100%; display: flex;">

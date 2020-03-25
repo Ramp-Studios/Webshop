@@ -23,8 +23,8 @@ if(localStorage.getItem('token') <= 0){
 
     element.appendChild(para);
 
-    let formAddReview = document.getElementById("addUser");
-    formAddReview.addEventListener("submit", async (evt) => {
+    let formAddUser = document.getElementById("addUser");
+    formAddUser.addEventListener("submit", async (evt) => {
         evt.preventDefault();
         let form = document.getElementById("addUser");
         let formData = new FormData(form);
@@ -47,7 +47,7 @@ if(localStorage.getItem('token') <= 0){
         }
         catch (err) {
             console.log(err);
-            formAddReview.setAttribute("class", "error");
+            formAddUser.setAttribute("class", "error");
         }
     });
 }

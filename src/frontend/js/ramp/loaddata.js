@@ -31,7 +31,6 @@ async function load(soort) {
         }
     })
     const data = JSON.parse(await response.json());
-    console.log(data)
     let done = 0;
     let carousel
     if (soort === 'top10') carousel = document.getElementById('aanbevolen-carousel').children;

@@ -32,7 +32,8 @@ request.onload = function() {
         for(y = 0; y < product[i].reviews.length && y < 5; y++){ //Loop for reviews only display latest 5
           let element = document.getElementById("product-reviews");
           let para = document.createElement("p");
-          para.innerHTML = `<br> Rating: ${product[i].reviews[y].rating} <br> Name: ${product[i].reviews[y].name} <br> Review: ${product[i].reviews[y].text}`;
+          para.className = "productpage-review"
+          para.innerHTML = `Rating: ${product[i].reviews[y].rating} <br> Name: ${product[i].reviews[y].name} <br> Review: ${product[i].reviews[y].text}`;
           element.appendChild(para);
         }
 

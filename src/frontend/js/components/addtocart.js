@@ -16,7 +16,7 @@ function addproduct(){ //Adds single product to cart
     productsincartrefresh += 1;
 }
 
-if(window.location.pathname == "/" || window.location.pathname == "/index.html"){
+if(window.location.pathname == "/" || window.location.pathname == "/index.html" || window.location.pathname == '/productlist.html'){
     if(api.hasToken()){
         setTimeout(() => {
             let Button2 = document.getElementsByClassName("product-add-to-ww")

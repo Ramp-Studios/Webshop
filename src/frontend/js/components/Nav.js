@@ -79,9 +79,7 @@ function submitting(event) {
 searchbar.addEventListener('submit', submitting);
 
 async function getusername(){
-    console.log("Test")
     if(localStorage.getItem('token').length > 1){
-        console.log("Test2")
         let user = await api.getUser(localStorage.getItem('token'));
         let userelement = document.getElementById("username")
         userelement.innerHTML = `Logged in as: ${user.name}`

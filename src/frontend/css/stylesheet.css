@@ -1004,3 +1004,21 @@ button.addtocart:hover {
     margin-left: auto;
     margin-right: auto;
 }
+
+p.productpage-review{
+    margin-top: 0.5%;
+    padding-left: 1px;
+    border-style: solid;
+}
+
+p#product-reviews{
+    width: 70vw;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+form#addReview{
+    width: 70vw;
+    margin-left: auto;
+    margin-right: auto;
+}

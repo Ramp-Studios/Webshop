@@ -12,7 +12,6 @@ if(window.location.pathname == "/checkout.html"){
 async function loadCart() {
     if(api.hasToken()){
         let cart = await api.getCart(localStorage.getItem('token'));
-        console.log(cart.products)
         cart.products.forEach(async element => {
             if (element.amount > 0) {
                 let x = await api.getProducts(element._id)
