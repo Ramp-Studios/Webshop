@@ -4,7 +4,7 @@ class Component {
         this.rootElement = document.createElement(element);
     }
     getElementById(id) { 
-        return this.rootElement.querySelector(`#a${id}`); //Leraren fout ID's kunnen niet starten met nummers
+        return this.rootElement.querySelector(`#a${id}`); //fout ID's kunnen niet starten met nummers
     }
 
     initView() {

@@ -1,14 +1,16 @@
-const queryString2 = window.location.search;
-const cleanString2 = queryString2.replace("?product=a","");
-const token2 = localStorage.getItem('token');
+const Searchbar = window.location.search;
+const ProductIDSearch = Searchbar.replace("?product=a","");
 let productsincartrefresh = 0;
 
 loadproductsincart()
-async function loadproductsincart() { //Load the products all once
-    let cart = await api.getCart(localStorage.getItem('token'));
 
-    for(let i = 0; i < cart.products.length; i++){
-        productsincartrefresh += cart.products[i].amount
+async function loadproductsincart() { //Load the products all once
+    if(api.hasToken()){
+        let cart = await api.getCart(localStorage.getItem('token'));
+
+        for(let i = 0; i < cart.products.length; i++){
+            productsincartrefresh += cart.products[i].amount
+        }
     }
 }
 
@@ -25,7 +27,7 @@ if(window.location.pathname == "/" || window.location.pathname == "/index.html" 
                 Button2[i].addEventListener("click", async (evt) => {
                     evt.preventDefault();
                     try {
-                        let response2 = await api.addToCart(Button2[i].name.slice(1), token2);
+                        let response2 = await api.addToCart(Button2[i].name.slice(1), token);
 
                         addproduct()
                         setTimeout(() => { //Changes the number next to cart +1 when clicking once
@@ -40,7 +42,7 @@ if(window.location.pathname == "/" || window.location.pathname == "/index.html" 
                     }
                 });
             }
-        }, 1e3);
+        }, 1000);
     }
 } else {
     if(api.hasToken()){
@@ -48,7 +50,7 @@ if(window.location.pathname == "/" || window.location.pathname == "/index.html" 
         Button.addEventListener("click", async (evt) => {
             evt.preventDefault();
             try {
-                let response = await api.addToCart(cleanString2, token2);
+                let response = await api.addToCart(ProductIDSearch, token);
 
                 addproduct()
                 setTimeout(() => { //Changes the number next to cart +1 when clicking once

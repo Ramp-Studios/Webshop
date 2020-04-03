@@ -51,19 +51,21 @@ async function remove(id, amount){
 
 //Nav winkelwagen button
 async function loadWWbutton() {
-    let cart = await api.getCart(localStorage.getItem('token'));
-
-    for(let i = 0; i < cart.products.length; i++){
-        productsincart += cart.products[i].amount
-    }
-
     if(api.hasToken()){
-        let element = document.getElementById("ww")
-        let para = document.createElement("div");
-        para.innerHTML = `
-            <button id="Winkelwagen" onclick="window.location.href='/checkout.html'"><i aria-hidden="true" class="fas fa-shopping-cart"></i></button>
-            <i id="cart-items" href='/checkout.html'>${productsincart} items<i>
-        `
-        element.appendChild(para);
+        let cart = await api.getCart(localStorage.getItem('token'));
+
+        for(let i = 0; i < cart.products.length; i++){
+            productsincart += cart.products[i].amount
+        }
+
+        if(api.hasToken()){
+            let element = document.getElementById("ww")
+            let para = document.createElement("div");
+            para.innerHTML = `
+                <button id="Winkelwagen" onclick="window.location.href='/checkout.html'"><i aria-hidden="true" class="fas fa-shopping-cart"></i></button>
+                <i id="cart-items" href='/checkout.html'>${productsincart} items<i>
+            `
+            element.appendChild(para);
+        }
     }
 }

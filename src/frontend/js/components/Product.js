@@ -4,7 +4,7 @@ class Product extends Component {
     constructor(data) {
         super("article");
         data._id = 'a'+data._id;
-        this.id = data._id; //Hier was substring 1 van docenten sheyt
+        this.id = data._id; //Hier was substring 1 van docenten
         this.name = data.name;
         this.brand = data.brand;
         this.images = data.images;
